@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "original": {
+    "path": "/home/young/桌面/Gamma/projects/智能行车-审核工作区/templates/score.xlsx",
+    "sha256": "d2e364a73174429d34d927c68f8d964aa62c6ccc637aab3f2f10bb7170c6bcad"
+  },
+  "authored": {
+    "path": "/home/young/桌面/Gamma/projects/智能行车-审核工作区/analysis/score-staged.xlsx",
+    "sha256": "e583e55d44ce787dce3e0d07064e236e5f0478d00c6c09987a65ca9949d71560"
+  },
+  "summary": {
+    "expectedCells": 6,
+    "changedCells": 6,
+    "authorizedChanges": 6,
+    "unexpectedChanges": 0,
+    "structuralChanges": 0,
+    "authorizedCellsUnchanged": 0
+  },
+  "unexpectedChanges": [],
+  "structuralChanges": [],
+  "authorizedCellsUnchanged": [],
+  "truncated": false,
+  "note": "A change outside --expect-changed is a failure even when the scores look correct."
+}

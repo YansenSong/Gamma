@@ -100,7 +100,7 @@ def validate(path: Path) -> dict:
     if hashlib.sha256((root/Path(report.get("template",""))).read_bytes()).hexdigest()!=report_source['sha256']:
         raise SpecError('Report template must have the bound report_template source hash')
     inputs=spec.get("scoring",{}).get("inputs",[])
-    if not isinstance(inputs,list) or not inputs: raise SpecError("scoring inputs must be a non-empty list")
+    if not isinstance(inputs,list): raise SpecError("scoring inputs must be a list")
     field_ids=[x.get("id") for x in inputs if isinstance(x,dict)]
     if len(field_ids)!=len(inputs) or len(set(field_ids))!=len(field_ids): raise SpecError("input IDs must be unique")
     fields=set(field_ids)

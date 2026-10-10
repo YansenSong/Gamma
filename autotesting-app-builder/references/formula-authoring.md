@@ -64,9 +64,9 @@ sections — record the conflict and the candidate readings with the score
 difference each produces. That is exactly the material `business_decisions`
 exists for.
 
-## Original-path writeback
+## Project-copy writeback
 
-Unambiguous missing formulas may be filled without another per-cell permission prompt. Existing formulas, including SUM aggregates, remain intact. Conflicts and ambiguous business rules are blockers until explicitly reviewed.
+Unambiguous missing formulas may be filled in the project copy without another per-cell permission prompt. Point the plan at `../templates/score.xlsx` inside the `init_project.py` workspace; do not point it at the user's original source. Existing formulas, including SUM aggregates, remain intact. Conflicts and ambiguous business rules are blockers until explicitly reviewed.
 
 The JSON plan requires `workbook`, `source_sha256`, `formulas` and `boundary_cases`. Each formula has `sheet`, `cell`, `original: null`, `formula`, `inputs`, `pdf_refs` with integer page and location, `rule_explanation`, `boundary_checks` and risks. Each boundary case has concrete `inputs` and `expected` formula results. These are reviewed engineering expectations from the PDF, not Python-calculated scores.
 

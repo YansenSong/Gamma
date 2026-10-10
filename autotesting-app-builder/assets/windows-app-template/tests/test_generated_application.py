@@ -148,6 +148,24 @@ def test_audit_records_the_calculation_authority_and_output_hashes(job):
         "scores were not read from a native Excel recalculation")
 
 
+def test_filled_workbook_is_the_report_source_and_original_is_untouched(service, tmp_path):
+    """Required native Excel gate for the new default workflow on Windows."""
+    filled = PROJECT / "examples" / "filled_score.xlsx"
+    assert filled.is_file(), "add examples/filled_score.xlsx with real filled input cells"
+    before = sha256(filled)
+    result = service.run_job_from_workbook(filled, tmp_path)
+    assert sha256(filled) == before
+    audit = json.loads(Path(result["audit"]).read_text(encoding="utf-8"))
+    assert audit["input_workbook"]["sha256"] == before
+    assert audit["calculation_authority"]["recalculation"]["engine"] == "Microsoft Excel"
+    scores = load_workbook(result["workbook"], data_only=True, read_only=True)
+    try:
+        for name, mapping in SPEC["excel_output"]["output_cells"].items():
+            assert result["scores"][name] == scores[mapping["sheet"]][mapping["cell"]].value
+    finally:
+        scores.close()
+
+
 def test_boundary_values_score_as_the_charter_states(service, tmp_path):
     """Project-specific: the charter's own tier boundaries.
 

@@ -18,7 +18,7 @@ def cell_signature(cell):
     return (None if blank else value,"blank" if blank else cell.data_type,cell.number_format,cell.protection.locked,
             cell.comment.text if cell.comment else None,cell.hyperlink.target if cell.hyperlink else None)
 def workbook_snapshot(book,targets):
-    snapshot={"sheets":tuple(book.sheetnames),"defined_names":tuple(sorted(book.defined_names)),"cells":{}}
+    snapshot={"sheets":tuple(book.sheetnames),"defined_names":tuple(sorted((name,entry.attr_text) for name,entry in book.defined_names.items())),"cells":{}}
     for sheet in book.worksheets:
         snapshot[f"merged:{sheet.title}"]=tuple(sorted(str(r) for r in sheet.merged_cells.ranges))
         for row in sheet.iter_rows():
@@ -156,3 +156,112 @@ def run_job(input_path,output_dir):
     try: facts=json.loads(source.read_text(encoding="utf-8-sig"))
     except (OSError,json.JSONDecodeError) as exc: raise InputValidationError(f"无法读取 JSON 输入：{exc}") from exc
     return run_job_from_facts(facts,output_dir)
+
+def run_job_from_workbook(input_path, output_dir):
+    """Recalculate a copy of the supplied, filled workbook and report its own scores."""
+    source=Path(input_path).resolve()
+    if source.suffix.lower()!='.xlsx' or not source.is_file():
+        raise InputValidationError('请选择已填写的 .xlsx 评分工作簿')
+    spec=load_spec()
+    if spec.get('scoring',{}).get('mode')!='excel_native':
+        raise InputValidationError('仅支持 Excel 原生公式评分')
+    validate_project(resource_path('config/project.json'))
+    xcfg=spec['excel_output']; outputs=xcfg.get('output_cells',{})
+    if not outputs: raise InputValidationError('Excel 评分输出映射尚未确认')
+    template=resource_path(xcfg['template'])
+    expected=next((item['sha256'] for item in spec['sources'] if item['role']=='workbook'),None)
+    if not expected or digest(template)!=expected: raise InputValidationError('Excel 模板 SHA-256 与项目配置不符')
+    template_book=load_workbook(template,data_only=False)
+    upload=load_workbook(source,data_only=False)
+    try:
+        if template_book.sheetnames!=upload.sheetnames:
+            raise InputValidationError('上传工作簿的工作表结构与模板不符')
+        input_cells=xcfg.get('input_cells',{})
+        allowed=mapping_targets(template_book,input_cells)
+        mapped_outputs=mapping_targets(template_book,outputs,formula_outputs=True)
+        if allowed & mapped_outputs: raise InputValidationError('Excel 输入与结果映射不能重叠')
+        for sheet in template_book.worksheets:
+            other=upload[sheet.title]
+            if tuple(sorted(str(x) for x in sheet.merged_cells.ranges))!=tuple(sorted(str(x) for x in other.merged_cells.ranges)):
+                raise InputValidationError('上传工作簿的合并单元格与模板不符：'+sheet.title)
+            coordinates={cell.coordinate for row in sheet for cell in row if cell.value is not None or cell.has_style or cell.comment or cell.hyperlink}
+            coordinates.update(cell.coordinate for row in other for cell in row if cell.value is not None or cell.has_style or cell.comment or cell.hyperlink)
+            for address in coordinates:
+                key=(sheet.title,address)
+                if key in allowed:
+                    entered=other[address]
+                    if entered.data_type in {'f','e'}:
+                        raise InputValidationError(f'输入单元格不能是公式或错误：{sheet.title}!{address}')
+                    continue
+                if cell_signature(sheet[address])!=cell_signature(other[address]):
+                    raise InputValidationError(f'上传工作簿与模板不符：{sheet.title}!{address}')
+        if tuple(sorted((name,entry.attr_text) for name,entry in template_book.defined_names.items()))!=tuple(sorted((name,entry.attr_text) for name,entry in upload.defined_names.items())):
+            raise InputValidationError('上传工作簿的定义名称与模板不符')
+    finally:
+        template_book.close();upload.close()
+    original_sha=digest(source)
+    root=Path(output_dir).resolve();root.mkdir(parents=True,exist_ok=True)
+    app=spec['application'];stage=root/f".{app['id']}-{uuid.uuid4().hex}.tmp";stage.mkdir()
+    try:
+        xlsx=stage/f"{app['id']}-score.xlsx";shutil.copy2(source,xlsx)
+        recalc=_excel_native_recalculate(xlsx,{})
+        if recalc.get('engine')!='Microsoft Excel' or not recalc.get('version'):
+            raise InputValidationError('缺少 Microsoft Excel 原生重算证据')
+        if digest(source)!=original_sha: raise InputValidationError('上传原件在处理期间发生变化')
+        formula_book=load_workbook(xlsx,data_only=False)
+        try:
+            uploaded_again=load_workbook(source,data_only=False)
+            try:
+                if workbook_snapshot(formula_book,allowed)!=workbook_snapshot(uploaded_again,allowed):
+                    raise InputValidationError('Excel 重算改变了评分工作簿的公式或非输入内容')
+            finally:uploaded_again.close()
+            for binding in spec['scoring']['formula_bindings']:
+                cell=formula_book[binding['sheet']][binding['cell']]
+                if cell.data_type!='f' or cell.value!=binding['formula']:
+                    raise InputValidationError('重算后评分公式发生变化：'+binding['output'])
+        finally:formula_book.close()
+        values=load_workbook(xlsx,data_only=True,read_only=True)
+        try:
+            scores={}
+            for key,item in outputs.items():
+                cell=values[item['sheet']][item['cell']]
+                value=cell.value
+                expected_type=item.get('value_type','number')
+                valid=(isinstance(value,(int,float)) and not isinstance(value,bool) and math.isfinite(value)) if expected_type=='number' else isinstance(value,str) and bool(value.strip())
+                if cell.data_type=='e' or not valid:raise InputValidationError(f'Excel 原生重算后结果 {key} 为空或类型不符')
+                scores[key]=value
+            facts={key:values[item['sheet']][item['cell']].value for key,item in input_cells.items()}
+        finally:values.close()
+        rcfg=spec['report_output'];report_template=resource_path(rcfg['template'])
+        for name,field in rcfg['fields'].items():
+            if field.get('kind')=='input' and facts.get(field.get('id')) in (None,''):
+                raise InputValidationError('报告字段缺少上传工作簿来源：'+name)
+        report_expected=next((x['sha256'] for x in spec['sources'] if x['role']=='report_template'),None)
+        if not report_expected or digest(report_template)!=report_expected:raise InputValidationError('报告模板 SHA-256 与项目配置不符')
+        audit_id=uuid.uuid4().hex
+        context=report_context(rcfg['fields'],facts,scores,{'excel_version':recalc['version'],'audit_id':audit_id})
+        draft=requires_draft(spec)
+        policy=spec.get('report_safety',{'provenance':'工程样例数据，业务规则与原始试验来源未获正式审批。'})
+        if draft:
+            for key in policy.get('legacy_result_fields',[]):
+                context[key]=str(context[key])+policy.get('result_suffix','（工程参考值）')
+        if docx_markers(report_template)['names']!=set(rcfg['fields']):raise InputValidationError('报告模板标记与配置不一致')
+        docx=stage/f"{app['id']}-report.docx";document=DocxTemplate(str(report_template));document.render(context);document.save(str(docx))
+        visible_status=mark_engineering_copy(docx,policy) if draft else {'status':'business_validated'}
+        audit={'schema_version':'autotesting-run-audit-v1','release_status':spec.get('release_status','engineering_sample'),
+               'visible_report_status':visible_status,'project_id':app['id'],'audit_id':audit_id,
+               'timestamp_utc':datetime.now(timezone.utc).isoformat(timespec='seconds'),
+               'project_spec_sha256':digest(resource_path('config/project.json')),
+               'input_workbook':{'path':str(source),'sha256':original_sha},
+               'workbook_template_sha256':digest(template),'report_template_sha256':digest(report_template),
+               'facts':{key:plain(value) for key,value in facts.items()},'scores':{key:plain(value) for key,value in scores.items()},
+               'calculation_authority':{'mode':'excel_native','recalculation':recalc},
+               'output_workbook':{'path':xlsx.name,'sha256':digest(xlsx)},
+               'output_report':{'path':docx.name,'sha256':digest(docx)}}
+        audit_path=stage/f"{app['id']}-audit.json";audit_path.write_text(json.dumps(audit,ensure_ascii=False,sort_keys=True,indent=2)+'\n',encoding='utf-8')
+        final=root/f"{app['id']}-run";index=2
+        while final.exists():final=root/f"{app['id']}-run-{index}";index+=1
+        stage.replace(final)
+        return {'bundle':final,'workbook':final/xlsx.name,'report':final/docx.name,'audit':final/audit_path.name,'scores':scores}
+    except Exception:
+        shutil.rmtree(stage,ignore_errors=True);raise

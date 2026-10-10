@@ -45,9 +45,10 @@ def _replace(paragraph, offset, old, new):
 
 def map_template(plan_path):
     plan = json.loads(Path(plan_path).read_text(encoding="utf-8"))
-    source = Path(plan["template"]).resolve()
-    output = Path(plan["output"]).resolve()
-    manifest = Path(plan["manifest"]).resolve()
+    base=Path(plan_path).resolve().parent
+    source = (base/plan["template"]).resolve()
+    output = (base/plan["output"]).resolve()
+    manifest = (base/plan["manifest"]).resolve()
     if source == output or output.exists() or manifest.exists():
         raise ValueError("named template and manifest must be new paths")
     report = extract_markers(source)
@@ -100,7 +101,8 @@ def map_template(plan_path):
               "fields": fields,
               "positions": [{"position_id": p["position_id"], "context": p["context"],
                              "field_id": by_id[p["position_id"]]["field_id"],
-                             "source": by_id[p["position_id"]]["source"]} for p in report["positions"]]}
+                             "source": by_id[p["position_id"]]["source"],
+                             "review_status": by_id[p["position_id"]].get("review_status","pending")} for p in report["positions"]]}
     manifest.parent.mkdir(parents=True, exist_ok=True)
     manifest.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return result

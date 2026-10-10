@@ -6,7 +6,9 @@ param(
 $ErrorActionPreference = 'Stop'
 $plan = Get-Content -LiteralPath $PlanPath -Raw -Encoding UTF8 | ConvertFrom-Json
 $manifest = Get-Content -LiteralPath $StageManifestPath -Raw -Encoding UTF8 | ConvertFrom-Json
-$source = (Resolve-Path -LiteralPath $plan.workbook).Path
+$planDirectory = Split-Path -Parent (Resolve-Path -LiteralPath $PlanPath).Path
+$workbookPath = if ([System.IO.Path]::IsPathRooted([string]$plan.workbook)) { [string]$plan.workbook } else { Join-Path $planDirectory $plan.workbook }
+$source = (Resolve-Path -LiteralPath $workbookPath).Path
 $staged = (Resolve-Path -LiteralPath $manifest.staged_path).Path
 if ((Get-FileHash -LiteralPath $source -Algorithm SHA256).Hash.ToLowerInvariant() -ne $manifest.source_sha256) { throw 'Source hash changed' }
 if ((Get-FileHash -LiteralPath $staged -Algorithm SHA256).Hash.ToLowerInvariant() -ne $manifest.staged_sha256) { throw 'Staged workbook hash changed' }

@@ -100,6 +100,24 @@ class FormulaWritebackTests(unittest.TestCase):
                 finally:
                     book.close()
 
+    def test_prepare_writes_unformatted_blank_cell_and_missing_row(self):
+        for target in ('B2','C5'):
+            with self.subTest(target=target):
+                self.source.unlink(missing_ok=True);self.staged.unlink(missing_ok=True);self.manifest.unlink(missing_ok=True)
+                book=Workbook();ws=book.active;ws.title='评分';ws['A2']=5;book.save(self.source);book.close()
+                formula='=IF(A2<=10,2,0)'
+                plan={'workbook':'score.xlsx','source_sha256':writer.sha(self.source),
+                      'formulas':[{'sheet':'评分','cell':target,'original':None,'formula':formula,
+                                   'inputs':['评分!A2'],'pdf_refs':[{'page':1,'location':'rule'}],
+                                   'rule_explanation':'constructed','boundary_checks':[10,11],'risks':[]}],
+                      'boundary_cases':[{'inputs':[{'sheet':'评分','cell':'A2','value':10}],
+                                         'expected':[{'sheet':'评分','cell':target,'value':2}]}]}
+                self.plan_path.write_text(json.dumps(plan,ensure_ascii=False),encoding='utf-8')
+                original=writer.sha(self.source)
+                writer.prepare(self.plan_path,self.staged,self.manifest)
+                self.assertEqual(writer.sha(self.source),original)
+                self.assertEqual(load_workbook(self.staged)['评分'][target].value,formula)
+
     def test_rejects_stale_plan_and_stage_without_touching_source(self):
         original = self.fixture("empty")
         writer.prepare(self.plan_path, self.staged, self.manifest)

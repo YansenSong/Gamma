@@ -6,7 +6,7 @@ try {
   $excel=New-Object -ComObject Excel.Application
   $excel.Visible=$false; $excel.DisplayAlerts=$false; $excel.AskToUpdateLinks=$false
   $excel.AutomationSecurity=3
-  $book=$excel.Workbooks.Open((Resolve-Path -LiteralPath $WorkbookPath).Path)
+  $book=$excel.Workbooks.Open((Resolve-Path -LiteralPath $WorkbookPath).Path,0,$false)
   foreach ($entry in $values.PSObject.Properties) {
     $parts=$entry.Name.Split('!'); if ($parts.Count -ne 2) { throw "Invalid target $($entry.Name)" }
     $sheet=$book.Worksheets.Item($parts[0]); $cell=$sheet.Range($parts[1])

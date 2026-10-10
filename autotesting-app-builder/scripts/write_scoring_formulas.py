@@ -19,6 +19,7 @@ from lxml import etree as ET
 from openpyxl import load_workbook
 from openpyxl.formula import Tokenizer
 from openpyxl.utils.cell import range_boundaries
+from openpyxl.utils.cell import coordinate_from_string, column_index_from_string
 
 MAIN = "http://schemas.openxmlformats.org/spreadsheetml/2006/main"
 REL = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
@@ -45,8 +46,8 @@ def _parts(archive):
     return result
 
 
-def validate_plan(plan):
-    path = Path(plan["workbook"]).resolve()
+def validate_plan(plan, *, base=None):
+    path = (Path(base or Path.cwd()) / plan["workbook"]).resolve()
     if not path.is_file() or path.suffix.lower() != ".xlsx" or not os.access(path, os.W_OK):
         raise ValueError("source must be a writable .xlsx file")
     if sha(path) != plan.get("source_sha256"):
@@ -165,11 +166,24 @@ def _patch(source, staged, entries):
             payload = old.read(info.filename)
             if info.filename in grouped:
                 root = ET.fromstring(payload)
+                sheet_data=root.find(f"{{{MAIN}}}sheetData")
                 for item in grouped[info.filename]:
                     cells = root.xpath(".//m:sheetData/m:row/m:c[@r=$address]", namespaces={"m": MAIN}, address=item["cell"])
-                    if len(cells) != 1:
-                        raise ValueError(f"target has no unique XML cell record: {item['sheet']}!{item['cell']}")
-                    cell = cells[0]
+                    if len(cells)>1:raise ValueError(f"target has duplicate XML cell records: {item['sheet']}!{item['cell']}")
+                    if cells:
+                        cell=cells[0]
+                    else:
+                        address=item['cell'];letters,row_number=coordinate_from_string(address)
+                        rows=sheet_data.xpath("./m:row[@r=$number]",namespaces={"m":MAIN},number=str(row_number))
+                        if rows:row=rows[0]
+                        else:
+                            row=ET.Element(f"{{{MAIN}}}row",r=str(row_number))
+                            following=next((child for child in sheet_data if int(child.get('r','0'))>row_number),None)
+                            sheet_data.insert(sheet_data.index(following),row) if following is not None else sheet_data.append(row)
+                        cell=ET.Element(f"{{{MAIN}}}c",r=address)
+                        column=column_index_from_string(letters)
+                        following=next((child for child in row if child.tag==f"{{{MAIN}}}c" and column_index_from_string(coordinate_from_string(child.get('r'))[0])>column),None)
+                        row.insert(row.index(following),cell) if following is not None else row.append(cell)
                     if len(cell) or cell.get("t") not in (None, "n"):
                         raise ValueError("target XML cell is not empty")
                     ET.SubElement(cell, f"{{{MAIN}}}f").text = item["formula"][1:]
@@ -194,7 +208,13 @@ def _verify_staged(source, staged, entries):
                 cells = updated.xpath(".//m:sheetData/m:row/m:c[@r=$address]", namespaces={"m": MAIN}, address=address)
                 if len(cells) != 1 or len(cells[0]) != 1 or cells[0][0].tag != f"{{{MAIN}}}f":
                     raise ValueError("unexpected target cell XML changes")
-                cells[0].remove(cells[0][0])
+                existing=prior.xpath(".//m:sheetData/m:row/m:c[@r=$address]",namespaces={"m":MAIN},address=address)
+                cell=cells[0];cell.remove(cell[0])
+                if not existing:
+                    row=cell.getparent();row.remove(cell)
+                    row_number=coordinate_from_string(address)[1]
+                    if len(row)==0 and not prior.xpath(".//m:sheetData/m:row[@r=$number]",namespaces={"m":MAIN},number=str(row_number)):
+                        row.getparent().remove(row)
             if ET.tostring(prior, method="c14n") != ET.tostring(updated, method="c14n"):
                 raise ValueError("non-target worksheet XML changed")
     book = load_workbook(staged, data_only=False, read_only=True)
@@ -207,7 +227,7 @@ def _verify_staged(source, staged, entries):
 
 def prepare(plan_path, staged_path, manifest_path):
     plan = json.loads(Path(plan_path).read_text(encoding="utf-8"))
-    path, _ = validate_plan(plan)
+    path, _ = validate_plan(plan, base=Path(plan_path).resolve().parent)
     staged = Path(staged_path).resolve()
     if staged == path or staged.exists():
         raise ValueError("stage must be a new path distinct from source")
@@ -225,7 +245,7 @@ def prepare(plan_path, staged_path, manifest_path):
 
 def commit(plan_path, manifest_path, evidence_path, receipt_path):
     plan = json.loads(Path(plan_path).read_text(encoding="utf-8"))
-    source, _ = validate_plan(plan)
+    source, _ = validate_plan(plan, base=Path(plan_path).resolve().parent)
     manifest = json.loads(Path(manifest_path).read_text(encoding="utf-8"))
     staged = Path(manifest["staged_path"]).resolve()
     if staged == source or not staged.is_file():

@@ -8,7 +8,8 @@ Copy this directory into a new generated project, then replace `config/project.j
 |---|---|
 | `config/project.json` | sources, `scoring.inputs`, `excel_output`, `report_output` |
 | `templates/` | the score workbook and the DOCX report template |
-| `examples/input.json` | one realistic input record |
+| `examples/filled_score.xlsx` | a filled copy of the delivered formula workbook for native Excel acceptance |
+| `examples/input.json` | optional legacy form/JSON input record |
 | `examples/boundary_cases.json` | optional — the charter's tier boundaries |
 | `tests/` | keep `test_generated_application.py`; add project-specific cases |
 
@@ -25,6 +26,8 @@ The behavioural tests drive native Excel recalculation and therefore need
 Microsoft Excel on the host — the same requirement the application itself has.
 
 
-The app accepts a JSON test record, validates required values, writes them into a copy of the workbook, drives native Excel recalculation (`scripts/recalculate_excel.ps1`, which refuses to overwrite a cell that holds a formula), reads the resulting formula values back, renders a DOCX report, and records output hashes.
+The primary workflow accepts a filled `.xlsx` workbook. It checks the supplied workbook against the formula template while allowing declared input cells to change, copies the supplied file, drives Microsoft Excel recalculation on the copy, reads that copy's score cells, renders a DOCX report, and records both input and output hashes. The original upload stays untouched. The target Windows computer must have Microsoft Excel installed. The full PyInstaller `onedir` folder must be distributed. CLI: `python src/main.py --run-workbook examples/filled_score.xlsx --output out`.
+
+The form/JSON route remains available as a legacy option and rebuilds a workbook from the packaged template.
 
 Excel formulas are the only scoring authority. Only `scoring.mode = "excel_native"` is accepted: the runtime contains no Python scorer, no expression evaluator and no fallback, and a mapped cell whose recalculated formula cache is missing is a blocker rather than a substituted number.

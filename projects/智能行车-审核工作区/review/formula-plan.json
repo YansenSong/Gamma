@@ -1,0 +1,352 @@
+{
+  "workbook": "../templates/score.xlsx",
+  "source_sha256": "d2e364a73174429d34d927c68f8d964aa62c6ccc637aab3f2f10bb7170c6bcad",
+  "formulas": [
+    {
+      "sheet": "Sheet1",
+      "cell": "N16",
+      "original": null,
+      "formula": "=IF(D16=\"\",\"\",IF(OR(NOT(ISNUMBER(D16)),D16<0,D16<>INT(D16)),NA(),MIN(3,D16*0.5)))",
+      "inputs": [
+        "Sheet1!D16"
+      ],
+      "pdf_refs": [
+        {
+          "page": 23,
+          "location": "p0023-t0002 / p0023-b0043"
+        }
+      ],
+      "rule_explanation": "连续场景表13：对应项目每次扣0.5分，每项最多扣3分；D列须是完成例外审核后的非负整数次数。",
+      "boundary_checks": [
+        0,
+        6,
+        7
+      ],
+      "risks": [
+        "D列次数的例外和证据需业务审核；空白不等于零。"
+      ]
+    },
+    {
+      "sheet": "Sheet1",
+      "cell": "N17",
+      "original": null,
+      "formula": "=IF(D17=\"\",\"\",IF(OR(NOT(ISNUMBER(D17)),D17<0,D17<>INT(D17)),NA(),MIN(3,D17*0.5)))",
+      "inputs": [
+        "Sheet1!D17"
+      ],
+      "pdf_refs": [
+        {
+          "page": 23,
+          "location": "p0023-t0002 / p0023-b0043"
+        }
+      ],
+      "rule_explanation": "连续场景表13：对应项目每次扣0.5分，每项最多扣3分；D列须是完成例外审核后的非负整数次数。",
+      "boundary_checks": [
+        0,
+        6,
+        7
+      ],
+      "risks": [
+        "D列次数的例外和证据需业务审核；空白不等于零。"
+      ]
+    },
+    {
+      "sheet": "Sheet1",
+      "cell": "N18",
+      "original": null,
+      "formula": "=IF(D18=\"\",\"\",IF(OR(NOT(ISNUMBER(D18)),D18<0,D18<>INT(D18)),NA(),MIN(3,D18*0.5)))",
+      "inputs": [
+        "Sheet1!D18"
+      ],
+      "pdf_refs": [
+        {
+          "page": 23,
+          "location": "p0023-t0002 / p0023-b0043"
+        }
+      ],
+      "rule_explanation": "连续场景表13：对应项目每次扣0.5分，每项最多扣3分；D列须是完成例外审核后的非负整数次数。",
+      "boundary_checks": [
+        0,
+        6,
+        7
+      ],
+      "risks": [
+        "D列次数的例外和证据需业务审核；空白不等于零。"
+      ]
+    },
+    {
+      "sheet": "Sheet1",
+      "cell": "N19",
+      "original": null,
+      "formula": "=IF(D19=\"\",\"\",IF(OR(NOT(ISNUMBER(D19)),D19<0,D19<>INT(D19)),NA(),MIN(3,D19*0.5)))",
+      "inputs": [
+        "Sheet1!D19"
+      ],
+      "pdf_refs": [
+        {
+          "page": 23,
+          "location": "p0023-t0002 / p0023-b0043"
+        }
+      ],
+      "rule_explanation": "连续场景表13：对应项目每次扣0.5分，每项最多扣3分；D列须是完成例外审核后的非负整数次数。",
+      "boundary_checks": [
+        0,
+        6,
+        7
+      ],
+      "risks": [
+        "D列次数的例外和证据需业务审核；空白不等于零。"
+      ]
+    },
+    {
+      "sheet": "Sheet1",
+      "cell": "N20",
+      "original": null,
+      "formula": "=IF(D20=\"\",\"\",IF(OR(NOT(ISNUMBER(D20)),D20<0,D20<>INT(D20)),NA(),MIN(3,D20*0.5)))",
+      "inputs": [
+        "Sheet1!D20"
+      ],
+      "pdf_refs": [
+        {
+          "page": 23,
+          "location": "p0023-t0002 / p0023-b0043"
+        }
+      ],
+      "rule_explanation": "连续场景表13：对应项目每次扣0.5分，每项最多扣3分；D列须是完成例外审核后的非负整数次数。",
+      "boundary_checks": [
+        0,
+        6,
+        7
+      ],
+      "risks": [
+        "D列次数的例外和证据需业务审核；空白不等于零。"
+      ]
+    },
+    {
+      "sheet": "Sheet1",
+      "cell": "N21",
+      "original": null,
+      "formula": "=IF(D21=\"\",\"\",IF(OR(NOT(ISNUMBER(D21)),D21<0,D21<>INT(D21)),NA(),MIN(3,D21*0.5)))",
+      "inputs": [
+        "Sheet1!D21"
+      ],
+      "pdf_refs": [
+        {
+          "page": 23,
+          "location": "p0023-t0002 / p0023-b0043"
+        }
+      ],
+      "rule_explanation": "连续场景表13：对应项目每次扣0.5分，每项最多扣3分；D列须是完成例外审核后的非负整数次数。",
+      "boundary_checks": [
+        0,
+        6,
+        7
+      ],
+      "risks": [
+        "D列次数的例外和证据需业务审核；空白不等于零。"
+      ]
+    }
+  ],
+  "boundary_cases": [
+    {
+      "inputs": [
+        {
+          "sheet": "Sheet1",
+          "cell": "D16",
+          "value": 0
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "D17",
+          "value": 0
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "D18",
+          "value": 0
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "D19",
+          "value": 0
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "D20",
+          "value": 0
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "D21",
+          "value": 0
+        }
+      ],
+      "expected": [
+        {
+          "sheet": "Sheet1",
+          "cell": "N16",
+          "value": 0
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "N17",
+          "value": 0
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "N18",
+          "value": 0
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "N19",
+          "value": 0
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "N20",
+          "value": 0
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "N21",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "sheet": "Sheet1",
+          "cell": "D16",
+          "value": 6
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "D17",
+          "value": 6
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "D18",
+          "value": 6
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "D19",
+          "value": 6
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "D20",
+          "value": 6
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "D21",
+          "value": 6
+        }
+      ],
+      "expected": [
+        {
+          "sheet": "Sheet1",
+          "cell": "N16",
+          "value": 3
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "N17",
+          "value": 3
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "N18",
+          "value": 3
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "N19",
+          "value": 3
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "N20",
+          "value": 3
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "N21",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "inputs": [
+        {
+          "sheet": "Sheet1",
+          "cell": "D16",
+          "value": 7
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "D17",
+          "value": 7
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "D18",
+          "value": 7
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "D19",
+          "value": 7
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "D20",
+          "value": 7
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "D21",
+          "value": 7
+        }
+      ],
+      "expected": [
+        {
+          "sheet": "Sheet1",
+          "cell": "N16",
+          "value": 3
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "N17",
+          "value": 3
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "N18",
+          "value": 3
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "N19",
+          "value": 3
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "N20",
+          "value": 3
+        },
+        {
+          "sheet": "Sheet1",
+          "cell": "N21",
+          "value": 3
+        }
+      ]
+    }
+  ],
+  "status": "pending",
+  "scope": "candidate-only; native Excel boundary gate not run"
+}

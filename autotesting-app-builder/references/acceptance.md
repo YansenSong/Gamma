@@ -27,3 +27,14 @@
 Include project/app version, source-file hashes, business-decision and mapping reviewer details, rule/test coverage, full test result, workbook/report validation, build result, target OS, and known limitations. Mark an unapproved synthetic sample as engineering_sample.
 
 Do not describe the result as business-ready when real evidence, a required native Excel recalc, or a reviewer decision is missing. Keep the output folder usable without the AutoTesting repository.
+# Filled-workbook release gate
+
+The default generated application must accept the operator's filled `.xlsx`
+workbook. Run `run_job_from_workbook` on Windows with installed Microsoft Excel
+and at least two copies whose input cells differ. Check that the report values
+match the recalculated output cells in each submitted workbook copy, that the
+reports differ as expected, and that each original upload's SHA-256 is unchanged.
+Tamper a bound score formula, remove a required cached result, and make native
+recalculation fail; all three cases must stop without a report bundle. Record
+the real Excel version, executable hash, and isolated onedir run. A patched
+`_excel_native_recalculate` is only a service contract test, never this gate.

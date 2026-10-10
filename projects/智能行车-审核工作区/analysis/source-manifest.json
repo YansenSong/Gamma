@@ -1,0 +1,28 @@
+{
+  "project_name": "智能行车评分报告",
+  "schema_version": "gamma-source-manifest-v1",
+  "sources": [
+    {
+      "original_path": "/home/young/桌面/docs/智能行车评分章程.pdf",
+      "project_path": "sources/charter.pdf",
+      "role": "charter",
+      "sha256": "c47a70c79a06fac8a4250739224f573fce2e58b8cbeead08ef7fd031476f16b6",
+      "size_bytes": 3222116
+    },
+    {
+      "original_path": "/home/young/桌面/docs/智能行车评分表.xlsx",
+      "project_path": "sources/workbook.xlsx",
+      "role": "workbook",
+      "sha256": "d2e364a73174429d34d927c68f8d964aa62c6ccc637aab3f2f10bb7170c6bcad",
+      "size_bytes": 17255
+    },
+    {
+      "original_path": "/home/young/桌面/docs/智能行车检验报告.docx",
+      "project_path": "sources/report_template.docx",
+      "role": "report_template",
+      "sha256": "abaab09adfe102ac7e560ed2ab61cc75f057d4c1850561aa7d91f3e6730954b3",
+      "size_bytes": 79708
+    }
+  ],
+  "status": "review_required"
+}

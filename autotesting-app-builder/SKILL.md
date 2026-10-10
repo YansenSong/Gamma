@@ -33,7 +33,7 @@ not a template, and is rejected. The named marker set is the authoritative list
 of what gets filled and must equal the keys of `report_output.fields`. Read
 references/report-mapping.md.
 
-Analyze the three inputs read-only before formula authoring. The Excel source is changed only by the two-step validated writeback; keep its unique backup and receipt. Naming a template's slots
+Analyze the three inputs read-only before formula authoring. Start a new workspace with `scripts/init_project.py` and author formulas only in its copied `templates/score.xlsx`; keep the user's source workbook unchanged. The project copy is changed only by the two-step validated writeback; keep its unique backup and receipt. Naming a template's slots
 writes a separate, hash-bound copy, so the supplied template keeps its SHA-256. A
 completed report is not an accepted input at all, so its values never enter
 scoring, inputs, or outputs.
@@ -71,13 +71,13 @@ including what to do when the Skill moves to another host.
 
 ## Workflow
 
-1. Check the external working environment and native Microsoft Excel availability; keep environments and generated projects outside this Skill folder.
+1. Check the external working environment and native Microsoft Excel availability; keep environments and generated projects outside this Skill folder. Use `init_project.py` to create a new review workspace from any three conforming documents, without domain presets.
 2. Inspect all three inputs read-only and record source hashes. Extract PDF clauses with page and block references; map Excel inputs, blank scoring cells, existing detail formulas and aggregate formulas. Missing scoring formulas are normal input.
 3. Derive formulas only for unambiguous rules. Record per-cell old content, formula, inputs, PDF references, explanation, boundary cases and risks. Preserve existing formulas; conflicts, ambiguous boundaries and missing inputs become blocking review questions.
 4. Validate syntax, references, cycles, range boundaries and native Microsoft Excel recalculation on a staged workbook. Python must never calculate final scores. Run `write_scoring_formulas.py prepare` to create the staged workbook and hash manifest; then `commit` invokes Microsoft Excel directly for all boundary cases and only on success creates a unique backup, writes the original XLSX path and emits a hash receipt. Keep the original hash as provenance and bind the rewritten file hash to `sources[role=workbook]` and `excel_output.template`.
 5. Inspect DOCX `{{}}`, `{{ }}` and named markers across body, tables, headers, footers and split runs. Reject markerless templates. Use `report_markers.py` position IDs and `map_report_template.py` to map every named and unnamed position to a field and declared source, then create a named DOCX copy. Unresolved sources block release.
-6. Generate the standalone Windows app with a controlled copy of the rewritten workbook and named report template. Runtime must not depend on the original input paths or the Skill directory.
-7. Test native Excel scoring boundaries, report rendering and isolated Windows EXE execution. Keep engineering samples blocked until business review and all required build evidence exist. Audit hashes, differences and source mappings before release.
+6. Generate the standalone Windows app with a controlled copy of the rewritten workbook and named report template. The default runtime path accepts the operator's filled workbook and calls `run_job_from_workbook`; it recalculates a safe copy and takes report scores from that copy. `run_job_from_facts` is a legacy form/JSON route. Runtime must not depend on the original input paths or the Skill directory.
+7. Test two differently filled workbooks, unchanged upload hashes, formula tampering, missing scores, native Excel boundaries, report rendering and isolated Windows EXE execution. A mock recalculation is engineering evidence only. Keep engineering samples blocked until business review and all required build evidence exist. Audit hashes, differences and source mappings before release.
 
 ## Tools in this skill
 
@@ -92,6 +92,10 @@ described above. Start with the preflight:
 
 - scripts/check_environment.py [--require-excel] — verify the vendored modules, declared dependencies, and whether an Excel calculation authority is reachable. A blocker here invalidates everything downstream, so read the `remediation` field it returns and follow its steps in order before running anything else.
 - scripts/inspect_pdf.py <pdf> --out <json>
+- scripts/init_project.py <pdf> <xlsx> <docx> --out <new-project-directory> --name <project-name> — copy three sources, produce inventories and unresolved review plans, and copy the generic runtime template. This is `review_required`, not a generated release.
+- scripts/export_report_positions.py <docx> --json <positions.json> --csv <positions.csv> — include table row, column and neighboring text for each anonymous marker; all mapping columns remain pending.
+- scripts/publish_scoring_rules.py <pdf-inventory.json> <reviewed-rule-plan.json> --markdown <评分细则.md> --rules <scoring_rules.json> — publish source-bound rules with page references and explicit pending/confirmed status. AI must first interpret the extracted PDF into the plan; this tool validates citations and cannot infer scoring thresholds on its own. `confirmed` requires reviewer and reviewed_at. Pending rules block release.
+- scripts/freeze_project.py <project-root> — after formula workbook and all report positions have confirmed mappings, bind their hashes into a validated `engineering_sample` project.json. It never grants business approval.
 - scripts/inspect_excel.py <xlsx> --out <json>
 - scripts/inspect_report.py <docx> --out <json> — rejects a DOCX with no {{ }} markers and reports the marker set, so the positions to fill are visible up front.
 - scripts/name_report_template.py <plan.json> [--dry-run] — assign field names to a blank template's {{ }} slots; reports every unnamed slot as a blocker.

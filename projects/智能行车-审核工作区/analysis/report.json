@@ -1,0 +1,4825 @@
+{
+  "analysis_mode": "read_only_no_save",
+  "body": [
+    {
+      "location": "body.table[1]",
+      "rows": [
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": ""
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": ""
+            }
+          ],
+          "row": 1
+        }
+      ]
+    },
+    {
+      "location": "body.paragraph[5]",
+      "style": "Normal",
+      "text": "检   验   报   告"
+    },
+    {
+      "location": "body.paragraph[7]",
+      "style": "Normal",
+      "text": "组 合 驾 驶 辅 助 系 统"
+    },
+    {
+      "location": "body.table[2]",
+      "rows": [
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "产品名称："
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": ""
+            }
+          ],
+          "row": 1
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "产品型号："
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": ""
+            }
+          ],
+          "row": 2
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "委托单位："
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": ""
+            }
+          ],
+          "row": 3
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "检验类别："
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "委托检验"
+            }
+          ],
+          "row": 4
+        }
+      ]
+    },
+    {
+      "location": "body.table[3]",
+      "rows": [
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": ""
+            }
+          ],
+          "row": 1
+        }
+      ]
+    },
+    {
+      "location": "body.paragraph[22]",
+      "style": "Normal",
+      "text": "注  意  事  项"
+    },
+    {
+      "location": "body.paragraph[24]",
+      "style": "Normal",
+      "text": "1、报告无主检、审核、批准人签名无效。"
+    },
+    {
+      "location": "body.paragraph[25]",
+      "style": "Normal",
+      "text": "2、报告涂改、篡改、缺页、部分复制使用无效。"
+    },
+    {
+      "location": "body.paragraph[26]",
+      "style": "Normal",
+      "text": "3、全文复制报告未加盖骑缝鲜章无效。"
+    },
+    {
+      "location": "body.paragraph[27]",
+      "style": "Normal",
+      "text": "4、送样检验报告仅对送检样品负责，送检样品的代表性、真实性由委托人负责。5、客户提供信息的准确性、真实性以及对检测结果有效性的影响由客户负责。"
+    },
+    {
+      "location": "body.paragraph[28]",
+      "style": "Normal",
+      "text": "6、对检验报告若有异议，请于收到检验报告之日起十五日内向检验单位提出，逾期不予受理。"
+    },
+    {
+      "location": "body.paragraph[29]",
+      "style": "Normal",
+      "text": "检验单位："
+    },
+    {
+      "location": "body.paragraph[30]",
+      "style": "Normal",
+      "text": "地    址："
+    },
+    {
+      "location": "body.paragraph[31]",
+      "style": "Normal",
+      "text": "电    话：——"
+    },
+    {
+      "location": "body.paragraph[32]",
+      "style": "Normal",
+      "text": "邮政编码：——"
+    },
+    {
+      "location": "body.paragraph[34]",
+      "style": "Normal",
+      "text": "委托单位："
+    },
+    {
+      "location": "body.paragraph[35]",
+      "style": "Normal",
+      "text": "地    址："
+    },
+    {
+      "location": "body.paragraph[36]",
+      "style": "Normal",
+      "text": "电    话：——"
+    },
+    {
+      "location": "body.paragraph[37]",
+      "style": "Normal",
+      "text": "邮政编码：——"
+    },
+    {
+      "location": "body.table[4]",
+      "rows": [
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "样品名称"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "插电式增程混合动力多用途乘用车"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "插电式增程混合动力多用途乘用车"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "型号规格"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": ""
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": ""
+            }
+          ],
+          "row": 1
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "样品名称"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "插电式增程混合动力多用途乘用车"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "插电式增程混合动力多用途乘用车"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "商    标"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": ""
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": ""
+            }
+          ],
+          "row": 2
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "委托单位"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": ""
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": ""
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "检验类别"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "委托检验"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "委托检验"
+            }
+          ],
+          "row": 3
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "生产单位"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": ""
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": ""
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "样品等级"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "——"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "——"
+            }
+          ],
+          "row": 4
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "送样地点"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": ""
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": ""
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "送样日期"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "2026年7月6日"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "2026年7月6日"
+            }
+          ],
+          "row": 5
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "样品数量"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "1"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "1"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "送样者"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "——"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "——"
+            }
+          ],
+          "row": 6
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "抽样单位"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "——"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "——"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "抽样者"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "——"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "——"
+            }
+          ],
+          "row": 7
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "抽样基数"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "——"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "——"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "原编号/\n生产日期"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "2026年3月"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "2026年3月"
+            }
+          ],
+          "row": 8
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "检验依据"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "IVISTA-SM-TI-A0-2026中国智能汽车指数测试与评价规程（2026版）附件B 智能行车指数测试与评价规程"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "IVISTA-SM-TI-A0-2026中国智能汽车指数测试与评价规程（2026版）附件B 智能行车指数测试与评价规程"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "IVISTA-SM-TI-A0-2026中国智能汽车指数测试与评价规程（2026版）附件B 智能行车指数测试与评价规程"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "IVISTA-SM-TI-A0-2026中国智能汽车指数测试与评价规程（2026版）附件B 智能行车指数测试与评价规程"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "IVISTA-SM-TI-A0-2026中国智能汽车指数测试与评价规程（2026版）附件B 智能行车指数测试与评价规程"
+            }
+          ],
+          "row": 9
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "检验项目"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "1.连续场景通过性测试\n2.真实交通适应性测试"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "1.连续场景通过性测试\n2.真实交通适应性测试"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "1.连续场景通过性测试\n2.真实交通适应性测试"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "1.连续场景通过性测试\n2.真实交通适应性测试"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "1.连续场景通过性测试\n2.真实交通适应性测试"
+            }
+          ],
+          "row": 10
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "检\n验\n结\n论"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "\n"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "\n"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "\n"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "\n"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "\n"
+            }
+          ],
+          "row": 11
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "检\n验\n结\n论"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "                                "
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "                                "
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "                                "
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "                                "
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "                                "
+            }
+          ],
+          "row": 12
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "备   注"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "\n"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "\n"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "\n"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "\n"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "\n"
+            }
+          ],
+          "row": 13
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "批准："
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "批准："
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "审核："
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "审核："
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "审核："
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "主检:"
+            }
+          ],
+          "row": 14
+        }
+      ]
+    },
+    {
+      "location": "body.paragraph[41]",
+      "style": "Normal",
+      "text": "样车有关参数"
+    },
+    {
+      "location": "body.table[5]",
+      "rows": [
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "VIN"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": ""
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": ""
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "里程数(km)"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "里程数(km)"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "3696"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "3696"
+            }
+          ],
+          "row": 1
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "轮胎压力(kPa)"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": " 前轮"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "250"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "燃油量/电量"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "大于90%"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "冷却液量"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "大于最小指示位置"
+            }
+          ],
+          "row": 2
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "轮胎压力(kPa)"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": " 后轮"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "250"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "制动液量"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "大于最小指示位置"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "机油量"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "大于最小指示位置"
+            }
+          ],
+          "row": 3
+        }
+      ]
+    },
+    {
+      "location": "body.paragraph[42]",
+      "style": "Normal",
+      "text": "2.评价结果"
+    },
+    {
+      "location": "body.table[6]",
+      "rows": [
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "评价维度"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "连续场景通过性"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "连续场景通过性"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "连续场景通过性"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "真实交通适应性"
+            }
+          ],
+          "row": 1
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "评价项目"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "高速/城快连续测试场景"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "城区连续\n测试场景"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "罚分项"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "真实交通适应性"
+            }
+          ],
+          "row": 2
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "分项得分"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 3
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "维度总分"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 4
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "总分"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 5
+        }
+      ]
+    },
+    {
+      "location": "body.paragraph[44]",
+      "style": "Normal",
+      "text": "2.1 连续场景通过性测试结果"
+    },
+    {
+      "location": "body.table[7]",
+      "rows": [
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "连续测试-具体试验场景"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "连续测试-具体试验场景"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "未发生碰撞"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "未发生碰撞"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "未发生碰撞"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "未发生碰撞"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "未发生碰撞"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "发生碰撞"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "得分率"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "得分"
+            }
+          ],
+          "row": 1
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "路线"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "场景"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "是否完全自主通过"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "是否刹停后，拨打转向灯后，自主通过"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "是否刹停后，拨打转向灯15s内，不能自主通过"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "是否触发AEB"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "制动前有无报警提示"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "碰撞前有无报警提示"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "得分率"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "得分"
+            }
+          ],
+          "row": 2
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "高速/城快连续测试路线"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "隧道内遇事故车辆"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}} "
+            }
+          ],
+          "row": 3
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "高速/城快连续测试路线"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "施工区域改道"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}} "
+            }
+          ],
+          "row": 4
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "高速/城快连续测试路线"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "弯道遇抛锚车辆（车尾有行人）"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}} "
+            }
+          ],
+          "row": 5
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "高速/城快连续测试路线"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "乘用车目标车切入"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}} "
+            }
+          ],
+          "row": 6
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "城区连续测试路线"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "隧道施工区域通行"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}} "
+            }
+          ],
+          "row": 7
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "城区连续测试路线"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "路口左转，多目标横穿"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}} "
+            }
+          ],
+          "row": 8
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "城区连续测试路线"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "直道遇倒地踏板式两轮摩托车"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}} "
+            }
+          ],
+          "row": 9
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "城区连续测试路线"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "立交桥遇抛锚车辆"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 10
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "通行性得分"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "通行性得分"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "通行时间"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "通行时间"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "通行时间"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "通行时间"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "通行时间"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "通行时间"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "得分率"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "得分"
+            }
+          ],
+          "row": 11
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "高速/城快连续测试路线"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "高速/城快连续测试路线"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 12
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "城区连续测试路线"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "城区连续测试路线"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 13
+        }
+      ]
+    },
+    {
+      "location": "body.paragraph[49]",
+      "style": "Normal",
+      "text": "续上表"
+    },
+    {
+      "location": "body.table[8]",
+      "rows": [
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "罚分项"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "出现次数"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "——"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "扣分"
+            }
+          ],
+          "row": 1
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "变道不打转向灯（紧急场景除外）"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "——"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 2
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "压实线"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "——"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 3
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "驶入错误的路线"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "——"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 4
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "驶入错误的车道"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "——"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 5
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "非场景路段内，驾驶员意料之外的制动"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "——"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 6
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "车辆通过测试场景时，纵向加速度绝对值≥4m/s2"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "——"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 7
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "封闭场地试验得分"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "封闭场地试验得分"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 8
+        }
+      ]
+    },
+    {
+      "location": "body.paragraph[50]",
+      "style": "Normal",
+      "text": "2.2真实交通适应性测试结果"
+    },
+    {
+      "location": "body.table[9]",
+      "rows": [
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "场景"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "场景"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "场景"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "第1档"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "第2档"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "第3档"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "第3档"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "第3档"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "第4档"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "第4档"
+            },
+            {
+              "cell": 11,
+              "nested_tables": [],
+              "text": "第4档"
+            },
+            {
+              "cell": 12,
+              "nested_tables": [],
+              "text": "得分"
+            }
+          ],
+          "row": 1
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "场景"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "场景"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "场景"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "2分场景\n（次数）"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "1.8分场景\n（次数）"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "1.2分场景\n（次数）"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "1分场景\n（次数）"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "0.8分场景\n（次数）"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "1.2分场景\n（次数）"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "1分场景\n（次数）"
+            },
+            {
+              "cell": 11,
+              "nested_tables": [],
+              "text": "0.8分场景\n（次数）"
+            },
+            {
+              "cell": 12,
+              "nested_tables": [],
+              "text": "得分"
+            }
+          ],
+          "row": 2
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "高速公路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "路段内"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "拥堵走停"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 11,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 12,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 3
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "高速公路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "路段内"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "隧道通行"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 11,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 12,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 4
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "高速公路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "匝道处"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "高速汇出匝道"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 11,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 12,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 5
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "高速公路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "匝道处"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "匝道内路线选择"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 11,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 12,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 6
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "高速公路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "匝道处"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "匝道内急弯通行"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 11,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 12,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 7
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "高速公路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "匝道处"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "匝道汇入高速"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 11,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 12,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 8
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "城市快速路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "城市快速路"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "匝道出入口通行"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 11,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 12,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 9
+        }
+      ]
+    },
+    {
+      "location": "body.paragraph[52]",
+      "style": "Normal",
+      "text": "续上表"
+    },
+    {
+      "location": "body.table[10]",
+      "rows": [
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "城市道路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "路段内"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "拥堵走停"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 11,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 12,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 1
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "城市道路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "路段内"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "急弯通行"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 11,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 12,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 2
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "城市道路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "路段内"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "主路辅路切换"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 11,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 12,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 3
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "城市道路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "路口处"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "车道选择"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 11,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 12,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 4
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "城市道路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "路口处"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "路口通行－主车进入路口前"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 11,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 12,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 5
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "城市道路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "路口处"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "路口通行－主车路口停止时"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 11,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 12,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 6
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "城市道路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "路口处"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "路口通行－主车路口通行时"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 11,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 12,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 7
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "城市道路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "路口处"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "环岛通行－主车驶入环岛"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 11,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 12,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 8
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "城市道路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "路口处"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "环岛通行－主车环岛内行驶"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 11,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 12,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 9
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "城市道路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "路口处"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "环岛通行－主车驶出环岛"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 11,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 12,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 10
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "城市道路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "路口处"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "调头通行"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 11,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 12,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 11
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "智能拟人化"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "智能拟人化"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "智能拟人化"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "平均通行时间的偏差σ"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "平均通行时间的偏差σ"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "平均通行时间的偏差σ"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "平均通行时间的偏差σ"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "平均通行时间的偏差σ"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "平均通行时间的偏差σ"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "平均通行时间的偏差σ"
+            },
+            {
+              "cell": 11,
+              "nested_tables": [],
+              "text": "平均通行时间的偏差σ"
+            },
+            {
+              "cell": 12,
+              "nested_tables": [],
+              "text": "得分"
+            }
+          ],
+          "row": 12
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "测试路线"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "测试路线"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "测试路线"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 7,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 8,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 9,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 10,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 11,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 12,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 13
+        }
+      ]
+    },
+    {
+      "location": "body.table[11]",
+      "rows": [
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "行驶舒适性"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "行驶舒适性"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "行驶舒适性"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "第一档扣分\n（次数）"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "第二档扣分\n（次数）"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "得分"
+            }
+          ],
+          "row": 1
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "纵向加速度"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "直行"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "重庆市盘溪路"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}\n{{}}\n{{}}\n{{}}\n{{}}\n{{}}\n{{}}"
+            }
+          ],
+          "row": 2
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "纵向加速度"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "直行"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "渝蓉高速‌：缙云山隧道出口－云雾山隧道入口"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}\n{{}}\n{{}}\n{{}}\n{{}}\n{{}}\n{{}}"
+            }
+          ],
+          "row": 3
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "纵向加速度"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "直行"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "成宜高速：富加北枢纽-清风枢纽"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}\n{{}}\n{{}}\n{{}}\n{{}}\n{{}}\n{{}}"
+            }
+          ],
+          "row": 4
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "纵向加速度"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "直行"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "成都市新华大道双林路"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}\n{{}}\n{{}}\n{{}}\n{{}}\n{{}}\n{{}}"
+            }
+          ],
+          "row": 5
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "纵向加速度"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "路口转弯"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "重庆市渝中区渝州路与虎歇路路口"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}\n{{}}\n{{}}\n{{}}\n{{}}\n{{}}\n{{}}"
+            }
+          ],
+          "row": 6
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "纵向加速度"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "路口转弯"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "重庆市两江新区福康路与新南路路口"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}\n{{}}\n{{}}\n{{}}\n{{}}\n{{}}\n{{}}"
+            }
+          ],
+          "row": 7
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "纵向加速度"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "路口转弯"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "成都市湔江路与九寨沟路路口"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}\n{{}}\n{{}}\n{{}}\n{{}}\n{{}}\n{{}}"
+            }
+          ],
+          "row": 8
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "横向加速度"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "直行"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "重庆市盘溪路"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 9
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "横向加速度"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "直行"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "渝蓉高速‌：缙云山隧道出口－云雾山隧道入口"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 10
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "横向加速度"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "直行"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "成宜高速：富加北枢纽-清风枢纽"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 11
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "横向加速度"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "直行"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "成都市新华大道双林路"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 12
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "横向加速度"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "路口转弯"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "重庆市渝中区渝州路与虎歇路路口"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 13
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "横向加速度"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "路口转弯"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "重庆市两江新区福康路与新南路路口"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 14
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "横向加速度"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "路口转弯"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "成都市湔江路与九寨沟路路口"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 15
+        }
+      ]
+    },
+    {
+      "location": "body.table[12]",
+      "rows": [
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "罚分项"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "罚分项"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "罚分项"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "出现次数"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "出现次数"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "扣分"
+            }
+          ],
+          "row": 1
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "高速/城快/城区道路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "所有场景路段"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "超过道路限速"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 2
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "高速/城快/城区道路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "所有场景路段"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "变道不打转向灯"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 3
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "高速/城快/城区道路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "所有场景路段"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "压实线"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 4
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "高速/城快/城区道路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "所有场景路段"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "连续压虚线行驶超过8s（不可抗力因素除外）"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 5
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "高速/城快/城区道路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "所有场景路段"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "驾驶员意料之外的制动或转向"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 6
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "高速/城快/城区道路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "所有场景路段"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "一次连续变更两条以上机动车道"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 7
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "高速/城快/城区道路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "所有场景路段"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "驶入错误的路线"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 8
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "高速/城快/城区道路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "所有场景路段"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "驶入错误车道"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 9
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "高速/城快/城区道路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "非规定场景路段"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "总控制次数（2次～5次）"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 10
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "高速/城快/城区道路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "非规定场景路段"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "总控制次数（6次～9次）"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 11
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "高速/城快/城区道路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "非规定场景路段"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "总控制次数（10 次及以上）"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 12
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "高速/城快道路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "路段内"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "在道路通畅情况下，主车在路段内低于道路最低限速行驶超过30s"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 13
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "城区道路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "路段内"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "驶入公交车专用道"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 14
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "城区道路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "路段内"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "驶入非机动车道"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 15
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "城区道路"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "路口处"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "闯红灯"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 16
+        },
+        {
+          "cells": [
+            {
+              "cell": 1,
+              "nested_tables": [],
+              "text": "开放道路试验得分"
+            },
+            {
+              "cell": 2,
+              "nested_tables": [],
+              "text": "开放道路试验得分"
+            },
+            {
+              "cell": 3,
+              "nested_tables": [],
+              "text": "开放道路试验得分"
+            },
+            {
+              "cell": 4,
+              "nested_tables": [],
+              "text": "开放道路试验得分"
+            },
+            {
+              "cell": 5,
+              "nested_tables": [],
+              "text": "{{}}"
+            },
+            {
+              "cell": 6,
+              "nested_tables": [],
+              "text": "{{}}"
+            }
+          ],
+          "row": 17
+        }
+      ]
+    },
+    {
+      "location": "body.paragraph[72]",
+      "style": "Normal",
+      "text": "3.检验地点、日期"
+    },
+    {
+      "location": "body.paragraph[73]",
+      "style": "Normal",
+      "text": "检验地点："
+    },
+    {
+      "location": "body.paragraph[74]",
+      "style": "Normal",
+      "text": "检验日期："
+    },
+    {
+      "location": "body.paragraph[75]",
+      "style": "Normal",
+      "text": "4.检验人员"
+    },
+    {
+      "location": "body.paragraph[76]",
+      "style": "Normal",
+      "text": "检验人员："
+    },
+    {
+      "location": "body.paragraph[77]",
+      "style": "Normal",
+      "text": "----------检验报告结束----------"
+    }
+  ],
+  "content_controls": [],
+  "document_role": "blank_template",
+  "field_candidates": [],
+  "file_size": 79708,
+  "has_macro_parts": false,
+  "image_parts": [],
+  "mapping_requires_human_confirmation": true,
+  "paragraph_count": 78,
+  "sample_values_are_facts": false,
+  "schema_version": "autotesting-docx-template-inventory-v1",
+  "section_count": 6,
+  "sections": [
+    {
+      "footer": [],
+      "header": [],
+      "section": 1
+    },
+    {
+      "footer": [],
+      "header": [],
+      "section": 2
+    },
+    {
+      "footer": [],
+      "header": [
+        {
+          "location": "section[3].header.table[1]",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "cell": 1,
+                  "nested_tables": [],
+                  "text": ""
+                },
+                {
+                  "cell": 2,
+                  "nested_tables": [],
+                  "text": "检 验 报 告"
+                },
+                {
+                  "cell": 3,
+                  "nested_tables": [],
+                  "text": "  "
+                }
+              ],
+              "row": 1
+            },
+            {
+              "cells": [
+                {
+                  "cell": 1,
+                  "nested_tables": [],
+                  "text": ""
+                },
+                {
+                  "cell": 2,
+                  "nested_tables": [],
+                  "text": "检 验 报 告"
+                },
+                {
+                  "cell": 3,
+                  "nested_tables": [],
+                  "text": ""
+                }
+              ],
+              "row": 2
+            },
+            {
+              "cells": [
+                {
+                  "cell": 1,
+                  "nested_tables": [],
+                  "text": ""
+                },
+                {
+                  "cell": 2,
+                  "nested_tables": [],
+                  "text": "检 验 报 告"
+                },
+                {
+                  "cell": 3,
+                  "nested_tables": [],
+                  "text": "  共  8  页     第  1  页"
+                }
+              ],
+              "row": 3
+            }
+          ]
+        }
+      ],
+      "section": 3
+    },
+    {
+      "footer": [],
+      "header": [
+        {
+          "location": "section[4].header.table[1]",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "cell": 1,
+                  "nested_tables": [],
+                  "text": ""
+                },
+                {
+                  "cell": 2,
+                  "nested_tables": [],
+                  "text": "检 验 报 告"
+                },
+                {
+                  "cell": 3,
+                  "nested_tables": [],
+                  "text": "  "
+                }
+              ],
+              "row": 1
+            },
+            {
+              "cells": [
+                {
+                  "cell": 1,
+                  "nested_tables": [],
+                  "text": ""
+                },
+                {
+                  "cell": 2,
+                  "nested_tables": [],
+                  "text": "检 验 报 告"
+                },
+                {
+                  "cell": 3,
+                  "nested_tables": [],
+                  "text": ""
+                }
+              ],
+              "row": 2
+            },
+            {
+              "cells": [
+                {
+                  "cell": 1,
+                  "nested_tables": [],
+                  "text": ""
+                },
+                {
+                  "cell": 2,
+                  "nested_tables": [],
+                  "text": "检 验 报 告"
+                },
+                {
+                  "cell": 3,
+                  "nested_tables": [],
+                  "text": "  共  8  页     第  1  页"
+                }
+              ],
+              "row": 3
+            }
+          ]
+        }
+      ],
+      "section": 4
+    },
+    {
+      "footer": [],
+      "header": [
+        {
+          "location": "section[5].header.table[1]",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "cell": 1,
+                  "nested_tables": [],
+                  "text": ""
+                },
+                {
+                  "cell": 2,
+                  "nested_tables": [],
+                  "text": "检 验 报 告"
+                },
+                {
+                  "cell": 3,
+                  "nested_tables": [],
+                  "text": "  "
+                }
+              ],
+              "row": 1
+            },
+            {
+              "cells": [
+                {
+                  "cell": 1,
+                  "nested_tables": [],
+                  "text": ""
+                },
+                {
+                  "cell": 2,
+                  "nested_tables": [],
+                  "text": "检 验 报 告"
+                },
+                {
+                  "cell": 3,
+                  "nested_tables": [],
+                  "text": ""
+                }
+              ],
+              "row": 2
+            },
+            {
+              "cells": [
+                {
+                  "cell": 1,
+                  "nested_tables": [],
+                  "text": ""
+                },
+                {
+                  "cell": 2,
+                  "nested_tables": [],
+                  "text": "检 验 报 告"
+                },
+                {
+                  "cell": 3,
+                  "nested_tables": [],
+                  "text": "  共  8  页     第  1  页"
+                }
+              ],
+              "row": 3
+            }
+          ]
+        }
+      ],
+      "section": 5
+    },
+    {
+      "footer": [],
+      "header": [
+        {
+          "location": "section[6].header.table[1]",
+          "rows": [
+            {
+              "cells": [
+                {
+                  "cell": 1,
+                  "nested_tables": [],
+                  "text": ""
+                },
+                {
+                  "cell": 2,
+                  "nested_tables": [],
+                  "text": "检 验 报 告"
+                },
+                {
+                  "cell": 3,
+                  "nested_tables": [],
+                  "text": "  "
+                }
+              ],
+              "row": 1
+            },
+            {
+              "cells": [
+                {
+                  "cell": 1,
+                  "nested_tables": [],
+                  "text": ""
+                },
+                {
+                  "cell": 2,
+                  "nested_tables": [],
+                  "text": "检 验 报 告"
+                },
+                {
+                  "cell": 3,
+                  "nested_tables": [],
+                  "text": ""
+                }
+              ],
+              "row": 2
+            },
+            {
+              "cells": [
+                {
+                  "cell": 1,
+                  "nested_tables": [],
+                  "text": ""
+                },
+                {
+                  "cell": 2,
+                  "nested_tables": [],
+                  "text": "检 验 报 告"
+                },
+                {
+                  "cell": 3,
+                  "nested_tables": [],
+                  "text": "  共  8  页     第  1  页"
+                }
+              ],
+              "row": 3
+            }
+          ]
+        }
+      ],
+      "section": 6
+    }
+  ],
+  "source_file": "智能行车检验报告.docx",
+  "source_sha256": "abaab09adfe102ac7e560ed2ab61cc75f057d4c1850561aa7d91f3e6730954b3",
+  "table_count": 12
+}

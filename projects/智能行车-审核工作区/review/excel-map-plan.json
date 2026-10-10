@@ -1,0 +1,123 @@
+{
+  "input_cells": {
+    "closed_penalty_16_count": {
+      "sheet": "Sheet1",
+      "cell": "D16",
+      "review_status": "pending",
+      "source_refs": [
+        "p0023-t0002"
+      ],
+      "meaning": "经例外审核后的该项出现次数"
+    },
+    "closed_penalty_17_count": {
+      "sheet": "Sheet1",
+      "cell": "D17",
+      "review_status": "pending",
+      "source_refs": [
+        "p0023-t0002"
+      ],
+      "meaning": "经例外审核后的该项出现次数"
+    },
+    "closed_penalty_18_count": {
+      "sheet": "Sheet1",
+      "cell": "D18",
+      "review_status": "pending",
+      "source_refs": [
+        "p0023-t0002"
+      ],
+      "meaning": "经例外审核后的该项出现次数"
+    },
+    "closed_penalty_19_count": {
+      "sheet": "Sheet1",
+      "cell": "D19",
+      "review_status": "pending",
+      "source_refs": [
+        "p0023-t0002"
+      ],
+      "meaning": "经例外审核后的该项出现次数"
+    },
+    "closed_penalty_20_count": {
+      "sheet": "Sheet1",
+      "cell": "D20",
+      "review_status": "pending",
+      "source_refs": [
+        "p0023-t0002"
+      ],
+      "meaning": "经例外审核后的该项出现次数"
+    },
+    "closed_penalty_21_count": {
+      "sheet": "Sheet1",
+      "cell": "D21",
+      "review_status": "pending",
+      "source_refs": [
+        "p0023-t0002"
+      ],
+      "meaning": "经例外审核后的该项出现次数"
+    }
+  },
+  "instruction": "Assign business IDs to exact sheet/cell addresses; verify against PDF rules.",
+  "output_cells": {
+    "closed_penalty_16": {
+      "sheet": "Sheet1",
+      "cell": "N16",
+      "review_status": "pending",
+      "source_refs": [
+        "p0023-t0002",
+        "p0023-b0043"
+      ],
+      "meaning": "该项扣分，最多3分"
+    },
+    "closed_penalty_17": {
+      "sheet": "Sheet1",
+      "cell": "N17",
+      "review_status": "pending",
+      "source_refs": [
+        "p0023-t0002",
+        "p0023-b0043"
+      ],
+      "meaning": "该项扣分，最多3分"
+    },
+    "closed_penalty_18": {
+      "sheet": "Sheet1",
+      "cell": "N18",
+      "review_status": "pending",
+      "source_refs": [
+        "p0023-t0002",
+        "p0023-b0043"
+      ],
+      "meaning": "该项扣分，最多3分"
+    },
+    "closed_penalty_19": {
+      "sheet": "Sheet1",
+      "cell": "N19",
+      "review_status": "pending",
+      "source_refs": [
+        "p0023-t0002",
+        "p0023-b0043"
+      ],
+      "meaning": "该项扣分，最多3分"
+    },
+    "closed_penalty_20": {
+      "sheet": "Sheet1",
+      "cell": "N20",
+      "review_status": "pending",
+      "source_refs": [
+        "p0023-t0002",
+        "p0023-b0043"
+      ],
+      "meaning": "该项扣分，最多3分"
+    },
+    "closed_penalty_21": {
+      "sheet": "Sheet1",
+      "cell": "N21",
+      "review_status": "pending",
+      "source_refs": [
+        "p0023-t0002",
+        "p0023-b0043"
+      ],
+      "meaning": "该项扣分，最多3分"
+    }
+  },
+  "status": "pending",
+  "workbook_sha256": "d2e364a73174429d34d927c68f8d964aa62c6ccc637aab3f2f10bb7170c6bcad"
+}
