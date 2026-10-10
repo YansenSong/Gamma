@@ -64,33 +64,13 @@ sections — record the conflict and the candidate readings with the score
 difference each produces. That is exactly the material `business_decisions`
 exists for.
 
-## Authorization
+## Original-path writeback
 
-Writing formulas is a template cleanup operation under `SKILL.md`. It requires:
+The user authorizes unambiguous missing formulas as part of this workflow. Existing formulas are preserved, including valid SUM aggregates. Overwrites, conflicts and ambiguous business rules require explicit review and are blocked until resolved.
 
-1. A separate copy, hash-bound to the pristine original.
-2. An explicit per-cell authorization record: cell reference, prior content, the
-   new formula, the charter `source_refs` it transcribes, and the reviewer,
-   time and reason.
-3. The pristine original left byte-identical. Never write into the supplied file.
+Create a per-cell JSON plan with `workbook`, `source_sha256`, `formulas`, and `native_excel_validation`. Each formula entry includes `sheet`, `cell`, `original: null`, `formula`, `inputs`, `pdf_refs` (page and location), `rule_explanation`, `boundary_checks`, and risks. Run native Microsoft Excel recalculation against the staged formulas first; the proof contains `status: passed`, source hash, Excel version and an evidence file path. A proof claim without actual run evidence is invalid.
 
-Cells with no authorization stay unchanged, and their absence blocks a business
-verdict.
-
-## Which file becomes the workbook source
-
-`validate_project_spec.py` requires `excel_output.template` to carry the exact
-SHA-256 of the `role: workbook` source. A formula-authored copy cannot share the
-original's hash, so the copy becomes the canonical source:
-
-- `sources[role=workbook]` and `excel_output.template` both point at the
-  **authorized copy**, and share its hash.
-- The pristine original is **not** a `sources` entry. Its hash is recorded in the
-  analysis inventory, the authorization record and the delivery manifest under a
-  name that says what it is, such as `upstream_source_sha256`.
-
-Do not work around this by loosening the hash check. The check is what proves the
-application scores with the workbook a human approved.
+`write_scoring_formulas.py` creates a unique backup, patches worksheet XML while keeping other XLSX package members, verifies the staged workbook, then atomically replaces the original path. It rejects unsupported features and nonblank or protected targets. Reopen the original path and retain the receipt with original, backup and new SHA-256. If a write fails before replacement, the original stays unchanged; the backup can restore it. Use the rewritten workbook as the controlled runtime template and retain the pre-write hash as provenance.
 
 ## Verify
 

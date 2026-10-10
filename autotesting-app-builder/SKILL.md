@@ -1,6 +1,6 @@
 ---
 name: autotesting-app-builder
-description: Analyze a scoring charter PDF, user-designed Excel workbook, and a blank DOCX inspection report template whose fill-in positions are marked with {{ }}, then help generate and validate a dedicated offline Windows scoring application. When the workbook does not yet contain per-item scoring formulas, derive them from the charter and write them into an authorized copy.
+description: Analyze a scoring charter PDF, user-designed Excel workbook, and a blank DOCX inspection report template whose fill-in positions are marked with {{ }}, then help generate and validate a dedicated offline Windows scoring application. When the workbook does not yet contain per-item scoring formulas, derive them from the charter and write validated formulas back to the supplied Excel path after an immutable backup.
 ---
 
 # AutoTesting App Builder
@@ -21,7 +21,7 @@ questions as evidence for humans to approve the workbook's formulas.
 
 A supplied workbook is often a tally sheet whose per-item score cells are empty
 or manually typed, with the scoring rules living only in the charter. In that case
-derive the formulas from the charter and write them into an authorized copy. This
+derive the formulas from the charter and write validated formulas back to the supplied Excel path after an immutable backup. This
 is authoring, not evaluation: Excel still computes every score, and a Python score
 remains forbidden. Never invent a threshold, cap, tier or default the charter does
 not state. Read references/formula-authoring.md.
@@ -71,17 +71,13 @@ including what to do when the Skill moves to another host.
 
 ## Workflow
 
-1. Inventory the supplied charter PDF, Excel template, and blank DOCX template. Record purpose, version, SHA-256, readability, and missing inputs.
-2. Extract PDF text/tables and preserve page/SourceRef anchors. Use AI to propose a plain-language scoring specification. Keep source facts separate from interpretation.
-3. Inspect Excel inputs, output cells, formulas, validations, protection, merged cells, and unsupported features. Do not infer semantic matches from similar labels alone.
-4. Decide whether the workbook already carries the scoring formulas. If score cells are bare, or the only formulas are aggregates, classify every bare cell as derivable, judgement or unresolved, then derive the derivable formulas from the charter with page/block source references and record authorizations before writing into a hash-bound copy. Never widen a range, add a cap or a default, or rewrite an existing formula without its own authorization. Because the authored copy cannot share the original's hash, it becomes the `role: workbook` source and the pristine original's hash is recorded outside `sources`. Verify with `scripts/diff_workbooks.py`. Read references/formula-authoring.md.
-5. Inspect DOCX paragraphs, tables, headers/footers, content controls, and the `{{ }}` markers. Reject a document with no markers: it is a completed report, not a blank template. The markers are the authoritative list of positions to fill. Assign each one a field name with scripts/name_report_template.py, which writes a named copy so the supplied template keeps its hash; treat any slot left unnamed as a blocker. Build a per-variable review inventory and export a readable checklist using scripts/export_field_review.py. Read references/report-mapping.md for the marker rules, classifications, required provenance and visible engineering-report protection.
-6. Present only score-affecting conflicts and field/report mappings for human confirmation. Persist named reviewer, reason, selected interpretation, and source hashes. Confirmed business decisions must bind the actual Excel formulas; a status label alone is insufficient.
-   For `business_validated`, bind separate approvals to canonical SHA-256 projections of scoring rules, Excel mappings, report mappings, and calculation authority. Any change to one projection invalidates that approval.
-7. Generate a project-specific application from assets/windows-app-template/. Keep project code/configuration/templates/tests together under a `generated_apps/<project-name>/` directory *beside* the Skill folder, never inside it — the Skill folder is a sealed unit that must stay byte-for-byte re-copyable, and a generated project is not part of it. The generated app must not import ivista_engine or other repository modules; it carries only the runtime components it needs and must run once the Skill tree is absent. Use the default IVISTA workbench visual components and read references/ui-design-system.md. Configure application identity and dynamic business fields per project.
-8. Run generated tests, workbook/report validators, and a Windows onedir build when the current host supports it. For formula-based templates, verify native Excel recalculation; openpyxl does not calculate formulas. Block a business-ready release when recalculation or required evidence is missing. Maintain separate legacy-output reproduction and independent charter-rule verdicts; summarize matched/conflict/ambiguous/not_covered/missing_evidence from actual rows. See references/charter-coverage.md.
-   Before release, rerun project-spec validation and compare its current hash, approvals, sources, decisions, and release state with the manifest. For Excel writes, validate all target cells and compare non-target workbook content before and after. Stage the workbook, report, and audit together; publish the output bundle only after all three succeed.
-9. Produce source, configuration, templates, tests, build script, README, and a delivery manifest with input hashes, approved decisions, test/build outcomes, and known limitations. The manifest records the project-spec SHA-256 and must not be treated as an approval authority.
+1. Check the external working environment and native Microsoft Excel availability; keep environments and generated projects outside this Skill folder.
+2. Inspect all three inputs read-only and record source hashes. Extract PDF clauses with page and block references; map Excel inputs, blank scoring cells, existing detail formulas and aggregate formulas. Missing scoring formulas are normal input.
+3. Derive formulas only for unambiguous rules. Record per-cell old content, formula, inputs, PDF references, explanation, boundary cases and risks. Preserve existing formulas; conflicts, ambiguous boundaries and missing inputs become blocking review questions.
+4. Validate syntax, references, cycles, range boundaries and native Microsoft Excel recalculation on a staged workbook. Python must never calculate final scores. Use `scripts/write_scoring_formulas.py` only with native validation evidence; it makes a unique backup, patches the original XLSX path, checks package contents and emits a hash receipt. Keep the original hash as provenance and bind the rewritten file hash to `sources[role=workbook]` and `excel_output.template`.
+5. Inspect DOCX `{{}}`, `{{ }}` and named markers across body, tables, headers, footers and split runs. Reject markerless templates. Give every unnamed position a stable location ID, assign a field and confirmed source, then name a working DOCX copy. Unresolved sources block release.
+6. Generate the standalone Windows app with a controlled copy of the rewritten workbook and named report template. Runtime must not depend on the original input paths or the Skill directory.
+7. Test native Excel scoring boundaries, report rendering and isolated Windows EXE execution. Keep engineering samples blocked until business review and all required build evidence exist. Audit hashes, differences and source mappings before release.
 
 ## Tools in this skill
 
@@ -99,6 +95,7 @@ described above. Start with the preflight:
 - scripts/inspect_excel.py <xlsx> --out <json>
 - scripts/inspect_report.py <docx> --out <json> — rejects a DOCX with no {{ }} markers and reports the marker set, so the positions to fill are visible up front.
 - scripts/name_report_template.py <plan.json> [--dry-run] — assign field names to a blank template's {{ }} slots; reports every unnamed slot as a blocker.
+- scripts/write_scoring_formulas.py <plan.json> --receipt <receipt.json> — safe writeback to the original Excel path after native validation.
 - scripts/diff_workbooks.py <original.xlsx> <authored.xlsx> --expect-changed Sheet1!N4,... — prove an authorized formula edit touched only the intended cells.
 - scripts/validate_project_spec.py <project.json>
 - scripts/validate_workbook.py <source.xlsx> --expected-sha256 <hash>. Pass --require-recalculated whenever scores come from formulas — the normal case — because that is what turns a missing recalculated cache into a hard failure instead of a note in the report. Omit it only for a workbook with no formula score cells at all (a blocked review project with empty formula_bindings), where no cache exists to require.
