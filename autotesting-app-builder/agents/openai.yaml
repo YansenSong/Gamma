@@ -1,4 +1,0 @@
-interface:
-  display_name: "AutoTesting App Builder"
-  short_description: "Generate a dedicated offline Windows scoring app from user documents"
-  default_prompt: "Use $autotesting-app-builder to analyze my charter, Excel template, and report template, author the scoring formulas my workbook is missing, resolve business decisions with me, and generate a standalone Windows scoring application."
