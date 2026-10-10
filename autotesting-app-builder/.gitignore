@@ -1,0 +1,23 @@
+# The Skill folder ships as plain files so it stays byte-for-byte re-copyable.
+# Nothing generated, installed or cached belongs in here.
+
+# Toolchain interpreter. It lives BESIDE this folder (../.venv), not inside it,
+# because a virtual environment bakes in absolute paths and is not portable.
+# Recreate it with the commands in references/environment.md.
+.venv/
+
+# Bytecode caches. vendor/ is a frozen copy of upstream; .pyc files here would
+# make its documented SHA-256 set unverifiable.
+__pycache__/
+*.py[cod]
+
+# Running the template's tests in place would drop this in the sealed folder.
+# Run them with `-p no:cacheprovider`, or from a copy outside the folder.
+.pytest_cache/
+
+# Generated projects live beside the Skill, never inside it.
+generated_apps/
+
+# Packaging output.
+build/
+dist/

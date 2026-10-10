@@ -1,0 +1,18 @@
+# Skill toolchain + generated-application runtime.
+#
+# The Skill's inspection wrappers (scripts/inspect_*.py) need pdfplumber,
+# openpyxl and python-docx. Generated apps additionally need PySide6 and
+# docxtpl; packaging needs PyInstaller.
+#
+# PySide6 is pinned to 6.8.3 across this whole tree — here, in
+# assets/windows-app-template/requirements.txt, and in the template's build.ps1 —
+# so the interpreter that smoke-tests a generated app is the same one that builds
+# it. 6.8.3 is the version every generated app in the upstream AutoTesting
+# repository ships; change all three together or none.
+PySide6==6.8.3
+openpyxl>=3.1,<4
+docxtpl>=0.20,<1
+python-docx>=1.1,<2
+pdfplumber>=0.11,<1
+# Matches the range build.ps1 resolves.
+pyinstaller>=6.10,<7

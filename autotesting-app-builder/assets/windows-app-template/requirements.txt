@@ -1,0 +1,5 @@
+# Kept in lockstep with the Skill's requirements.txt and build.ps1, and matching
+# the version every generated app in the upstream repository ships.
+PySide6==6.8.3
+openpyxl>=3.1,<4
+docxtpl>=0.20,<1
