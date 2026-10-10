@@ -6,7 +6,7 @@ score evaluator, expression tree, reference score or fallback authority.
 A supplied workbook often contains no per-item scoring formulas at all: the score
 cells are bare and only aggregate `SUM` rows carry formulas, if anything. Bindings
 cannot exist until the formulas do. Derive them from the charter and write them
-into an authorized copy, then bind as usual — read formula-authoring.md. Authoring
+back to the supplied Excel path after backup and native validation, then bind as usual — read formula-authoring.md. Authoring
 does not shift authority: Excel evaluates every score either way, and a formula
 the Skill wrote is subject to the same review, source references and approval as
 one the user supplied.

@@ -4,7 +4,7 @@
 This document covers the other case: the supplied workbook is a *tally sheet*
 whose per-item score cells are empty or manually typed, and the scoring rules
 exist only in the charter PDF. The Skill derives the formulas from the charter
-and writes them into an authorized copy.
+and writes them back to the supplied Excel path only after native validation.
 
 The authority does not move. Excel still evaluates every score. AI performs
 *authoring*, which is a reviewable edit to the workbook, not *evaluation*. A
@@ -66,16 +66,18 @@ exists for.
 
 ## Original-path writeback
 
-The user authorizes unambiguous missing formulas as part of this workflow. Existing formulas are preserved, including valid SUM aggregates. Overwrites, conflicts and ambiguous business rules require explicit review and are blocked until resolved.
+Unambiguous missing formulas may be filled without another per-cell permission prompt. Existing formulas, including SUM aggregates, remain intact. Conflicts and ambiguous business rules are blockers until explicitly reviewed.
 
-Create a per-cell JSON plan with `workbook`, `source_sha256`, `formulas`, and `native_excel_validation`. Each formula entry includes `sheet`, `cell`, `original: null`, `formula`, `inputs`, `pdf_refs` (page and location), `rule_explanation`, `boundary_checks`, and risks. Run native Microsoft Excel recalculation against the staged formulas first; the proof contains `status: passed`, source hash, Excel version and an evidence file path. A proof claim without actual run evidence is invalid.
+The JSON plan requires `workbook`, `source_sha256`, `formulas` and `boundary_cases`. Each formula has `sheet`, `cell`, `original: null`, `formula`, `inputs`, `pdf_refs` with integer page and location, `rule_explanation`, `boundary_checks` and risks. Each boundary case has concrete `inputs` and `expected` formula results. These are reviewed engineering expectations from the PDF, not Python-calculated scores.
 
-`write_scoring_formulas.py` creates a unique backup, patches worksheet XML while keeping other XLSX package members, verifies the staged workbook, then atomically replaces the original path. It rejects unsupported features and nonblank or protected targets. Reopen the original path and retain the receipt with original, backup and new SHA-256. If a write fails before replacement, the original stays unchanged; the backup can restore it. Use the rewritten workbook as the controlled runtime template and retain the pre-write hash as provenance.
+Run `write_scoring_formulas.py prepare <plan.json> --staged <stage.xlsx> --manifest <stage.json>`. This checks syntax, references and cycles, inserts only the target formulas into an independent XLSX and records hashes. Next run `write_scoring_formulas.py commit <plan.json> --manifest <stage.json> --evidence <native.json> --receipt <receipt.json>` on Windows with Microsoft Excel installed. Commit invokes `validate_formula_stage.ps1`, which recalculates every boundary case in Excel. It checks the plan, source and stage hashes before creating a unique backup, atomically replacing the original Excel path and writing the receipt. Failed validation leaves the original intact; a post-replacement verification failure restores it from backup.
+
+A constructed test double is valid only for engineering tests of the transaction. It is not Microsoft Excel evidence and cannot authorize a real delivery. Keep the rewritten Excel as the program's controlled scoring template and record the pre-write hash separately.
 
 ## Verify
 
 - `scripts/diff_workbooks.py <original> <authored>` — confirm the changed set is
-  exactly the authorized cells and that every non-target cell, style, merge,
+  exactly the planned cells and that every non-target cell, style, merge,
   validation and sheet property is untouched. An unexpected difference is a
   failure even when the scores look right.
 - `scripts/validate_workbook.py <authored> --expected-sha256 <hash>` then
@@ -84,13 +86,13 @@ Create a per-cell JSON plan with `workbook`, `source_sha256`, `formulas`, and `n
 - Test declared boundary values through native Excel and compare against the
   charter's stated tiers. A formula that has never been recalculated by Excel is
   an untested formula.
-- Confirm the authored copy opens without repair prompts and that the target
+- Confirm the rewritten workbook opens without repair prompts and that the target
   environment's Excel version is recorded.
 
 ## Report
 
 State, per cell: the rule, its charter citation, the formula written, the
 authorization, and the verification outcome. Report the aggregate, the
-pristine-original hash and the authored-copy hash together. A workbook whose
+pre-write hash, backup hash and rewritten-workbook hash together. A workbook whose
 per-item formulas were derived by AI is an `engineering_sample` until named
 reviewers approve both the derivations and the calculation authority.

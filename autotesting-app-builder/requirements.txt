@@ -11,6 +11,7 @@
 # repository ships; change all three together or none.
 PySide6==6.8.3
 openpyxl>=3.1,<4
+lxml>=5,<7
 docxtpl>=0.20,<1
 python-docx>=1.1,<2
 pdfplumber>=0.11,<1

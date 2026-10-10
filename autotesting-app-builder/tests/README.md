@@ -27,6 +27,9 @@ tests`). No test dependency is added to `requirements.txt`.
 | `test_project_spec_validator.py` | `scripts/validate_project_spec.py` |
 | `test_skill_review_workflow.py` | `scripts/review_workflow.py`, `scripts/build_review_inventory.py`, `assets/windows-app-template/src/review_preview.py` |
 | `test_report_markers.py` | `scripts/report_markers.py` — bare-slot detection and the template-error rules |
+| `test_formula_writeback.py` | blank, aggregate-only and partial formulas; backup, stage and failed writeback (Excel is a test double) |
+| `test_report_position_mapping.py` | full DOCX position mapping across body, merged table cell, header and footer; real DOCX render |
+| `test_three_document_flow.py` | constructed PDF + blank Excel + marked DOCX engineering flow, with Excel native step doubled |
 | `test_name_report_template.py` | `scripts/name_report_template.py` — slot naming, and the original keeping its hash |
 
 The two vendored-module tests pin the frozen contract on purpose: `vendor/` is a
@@ -68,3 +71,5 @@ and `test_skill_report_review.py`. They are not ported yet, so
 `scripts/verify_release.py`, `scripts/write_manifest.py`,
 `scripts/export_field_review.py` and `assets/.../src/report_safety.py`
 currently have no coverage here.
+
+The constructed engineering flow is **not** business evidence. Microsoft Excel cannot run in the Linux test environment. Run `validate_formula_stage.ps1` through `write_scoring_formulas.py commit` on Windows before accepting any real source workbook, then build and isolate-test the generated EXE.

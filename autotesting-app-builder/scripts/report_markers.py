@@ -85,6 +85,7 @@ def extract_markers(path: Path) -> dict:
     document = Path(path)
     slots: list = []
     names: set = set()
+    positions: list = []
     unsupported: list = []
     bracketed: list = []
     has_control = False
@@ -96,6 +97,11 @@ def extract_markers(path: Path) -> dict:
             for match in _ANY_BRACE.finditer(text):
                 inner = match.group(1).strip()
                 locator = f"{part}:p[{ordinal}]@{match.start()}"
+                if inner == "" or _IDENTIFIER.fullmatch(inner):
+                    positions.append({"position_id": locator, "part": part, "paragraph": ordinal,
+                                      "offset": match.start(), "marker": match.group(0),
+                                      "field_id": inner or None,
+                                      "context": text[max(0, match.start()-80):match.end()+80]})
                 if inner == "":
                     slots.append({"part": part, "paragraph": ordinal,
                                   "offset": match.start(), "locator": locator})
@@ -116,6 +122,7 @@ def extract_markers(path: Path) -> dict:
         "source_sha256": sha256_file(document),
         "slots": slots,
         "names": sorted(names),
+        "positions": positions,
         "unsupported": unsupported,
         "bracketed": bracketed,
         "has_control_syntax": has_control,
@@ -161,6 +168,7 @@ def summarize(report: dict) -> dict:
         "slots": len(report["slots"]),
         "markers": report["names"],
         "slotLocations": [item["locator"] for item in report["slots"]],
+        "positions": report["positions"],
         "unsupported": report["unsupported"],
         "bracketed": report["bracketed"],
     }

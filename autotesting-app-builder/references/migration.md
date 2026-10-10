@@ -15,7 +15,7 @@ These four modules are reached through the frozen copy in `<skill-root>/vendor/`
 
 - Scoring uses only native Excel formulas. Input validation, Excel automation and report generation are standalone; no Python scorer is copied.
 - Excel output copies a user-reviewed template and writes only explicit mappings into a separate output file. Formula workbooks require native Excel recalculation before their cached formulas can be trusted.
-- When the supplied workbook has no per-item scoring formulas, the Skill derives them from the charter and writes them into an authorized copy. The formulas remain Excel's, not Python's. Read formula-authoring.md.
+- When the supplied workbook has no per-item scoring formulas, the Skill derives them from the charter and writes them back to the supplied Excel path after backup and native validation. The formulas remain Excel's, not Python's. Read formula-authoring.md.
 - DOCX output uses explicit source mappings and Jinja placeholders. The report input is a blank template marked with `{{ }}`; a completed report is not accepted. Each marker is mapped and reviewed before it can be filled.
 - Project validation binds each approved business choice to a canonical Excel formula binding hash. Changing the selected choice, formula or mapping invalidates approval.
 
