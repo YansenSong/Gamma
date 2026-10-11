@@ -26,11 +26,12 @@ class FreezeGenericProjectTest(unittest.TestCase):
             book=Workbook();book.active.title='Numbers';book.active['A2']=5;book.save(base/'table.xlsx');book.close()
             doc=Document();doc.add_paragraph('Result {{}}');doc.save(base/'report.docx')
             root=base/'project';initialize(pdf,base/'table.xlsx',base/'report.docx',root,project_name='Unrelated Project')
-            inventory=json.loads((root/'analysis/pdf.json').read_text());ref=inventory['pages'][0]['blocks'][0]['ref']
+            inventory=json.loads((root/'analysis/pdf.json').read_text());ref='ai-p1-rule'
             rule_plan={'source_sha256':inventory['source_sha256'],'reviewed_pages':[1],
+                       'evidence':[{'ref':ref,'page':1,'text':'Synthetic score rule'}],
                        'rules':[{'id':'R1','statement':'Synthetic score rule','status':'pending','source_refs':[ref]}]}
             save(root/'review/rule-plan.json',rule_plan)
-            publish(root/'analysis/pdf.json',root/'review/rule-plan.json',root/'analysis/评分细则.md',root/'analysis/scoring_rules.json',root/'analysis/open_questions.json')
+            publish(root/'analysis/pdf.json',root/'review/rule-plan.json',root/'analysis/scoring_rules.json',root/'analysis/open_questions.json')
             workbook=load_workbook(root/'templates/score.xlsx');workbook['Numbers']['B2']='=IF(A2<=10,2,0)';workbook.save(root/'templates/score.xlsx');workbook.close()
             excel=json.loads((root/'review/excel-map-plan.json').read_text());excel['input_cells']={'observation':{'sheet':'Numbers','cell':'A2','review_status':'confirmed','source_refs':[ref]}}
             excel['output_cells']={'result':{'sheet':'Numbers','cell':'B2','review_status':'confirmed','source_refs':[ref]}};save(root/'review/excel-map-plan.json',excel)

@@ -26,6 +26,12 @@ class GenericProjectInitializationTest(unittest.TestCase):
             self.assertEqual(result['report_positions'],1)
             self.assertEqual([item.read_bytes() for item in (pdf,root/'measurements.xlsx',root/'blank.docx')],original)
             self.assertEqual(json.loads((output/'review/rule-plan.json').read_text())['rules'],[])
+            scope=json.loads((output/'review/rule-plan.json').read_text())['scope']
+            self.assertEqual(scope['type'],'workbook')
+            self.assertEqual(scope['score_targets'],[])
+            pdf_inventory=json.loads((output/'analysis/pdf.json').read_text())
+            self.assertEqual(pdf_inventory['schema_version'],'gamma-charter-source-v1')
+            self.assertEqual(pdf_inventory['pages'],[{'page_index':1}])
             self.assertEqual(json.loads((output/'review/excel-map-plan.json').read_text())['output_cells'],{})
             report_position=json.loads((output/'review/report-map-plan.json').read_text())['positions'][0]
             self.assertIsNone(report_position['source'])

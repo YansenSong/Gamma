@@ -1,8 +1,8 @@
 # Business review and incremental evidence revalidation
 
-Use this workflow when an engineering project needs named business opinions or
+Use this workflow when an engineering project needs business decisions or
 new trial evidence. Keep scoring code and accepted business decisions separate
-from submitted opinions. A CSV is a handoff form, not an approval authority.
+from submitted opinions. A CSV is a durable handoff form, not an approval authority. For an active user conversation, also ask unresolved questions directly in chat after recording them: batch three or four when available, explain the evidence and effect of each option, offer two or three mutually exclusive choices plus a free-text answer, and write the answer back to the project record. Do not leave the user to discover a CSV or Markdown file unaided.
 
 ## Prepare the review package
 

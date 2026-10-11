@@ -6,7 +6,7 @@ cell mappings or report fields, and it does not produce a runnable release.
 from __future__ import annotations
 
 import argparse
-from dataclasses import asdict
+import hashlib
 import json
 from pathlib import Path
 import shutil
@@ -14,7 +14,7 @@ import tempfile
 
 from _bootstrap import DOCUMENT_ROLE, write_json
 from ivista_engine.authoring.excel_analyzer import analyze_workbook
-from ivista_engine.charter.pdf_extractor import PdfPlumberExtractor
+import pdfplumber
 from ivista_reporting.template_inspector import inspect_docx_template
 from report_markers import extract_markers, template_error, sha256_file
 from export_report_positions import export as export_report_positions
@@ -35,10 +35,12 @@ def initialize(pdf:Path,workbook:Path,report:Path,destination:Path,*,project_nam
         raise ValueError('project destination must not contain an input document')
     if not project_name.strip():raise ValueError('project name is required')
     # Analyze originals before writing anything; a malformed input leaves no project.
-    pdf_doc=PdfPlumberExtractor().extract(paths['charter'])
-    pdf_inventory={'schema_version':'autotesting-charter-inventory-v1','source_file':str(paths['charter']),
-                   'source_sha256':pdf_doc.sha256,'page_count':pdf_doc.page_count,'metadata':pdf_doc.metadata,
-                   'pages':[asdict(page) for page in pdf_doc.pages]}
+    pdf_hash=hashlib.sha256(paths['charter'].read_bytes()).hexdigest()
+    with pdfplumber.open(paths['charter']) as source_pdf:
+        page_count=len(source_pdf.pages)
+    pdf_inventory={'schema_version':'gamma-charter-source-v1','source_file':str(paths['charter']),
+                   'source_sha256':pdf_hash,'page_count':page_count,
+                   'pages':[{'page_index':index} for index in range(1,page_count+1)]}
     excel_inventory=analyze_workbook(paths['workbook'])
     markers=extract_markers(paths['report_template'])
     issue=template_error(markers)
@@ -52,7 +54,7 @@ def initialize(pdf:Path,workbook:Path,report:Path,destination:Path,*,project_nam
         for role,path in paths.items():
             relative=Path('sources')/(role+path.suffix.lower())
             shutil.copy2(path,root/relative)
-            expected_hash={'charter':pdf_doc.sha256,'workbook':excel_inventory['source_sha256'],
+            expected_hash={'charter':pdf_hash,'workbook':excel_inventory['source_sha256'],
                            'report_template':markers['source_sha256']}[role]
             if sha256_file(root/relative)!=expected_hash or sha256_file(path)!=expected_hash:
                 raise ValueError(f'{role} changed during project initialization')
@@ -67,13 +69,17 @@ def initialize(pdf:Path,workbook:Path,report:Path,destination:Path,*,project_nam
         report_positions=export_report_positions(root/'sources/report_template.docx',root/'analysis/report-positions.json',root/'review/report-positions.csv')
         write_json(root/'analysis/source-manifest.json',{'schema_version':'gamma-source-manifest-v1','project_name':project_name,
                                                            'sources':source_manifest,'status':'review_required'})
-        write_json(root/'review/rule-plan.json',{'source_sha256':pdf_doc.sha256,'reviewed_pages':[],
+        write_json(root/'review/rule-plan.json',{'source_sha256':pdf_hash,'reviewed_pages':[],
+                                                 'scope':{'type':'workbook','workbook_sha256':excel_inventory['source_sha256'],
+                                                          'score_targets':[]},
                                                  'rules':[],'status':'pending'})
         write_json(root/'review/excel-map-plan.json',{'workbook_sha256':excel_inventory['source_sha256'],
                                                       'input_cells':{},'output_cells':{},'status':'pending',
-                                                      'instruction':'Assign business IDs to exact sheet/cell addresses; verify against PDF rules.'})
+                                                      'instruction':'First enumerate every Excel score output and its input cells; then find PDF evidence for each required formula.'})
         write_json(root/'review/formula-plan.json',{'workbook':'../templates/score.xlsx',
                                                     'source_sha256':excel_inventory['source_sha256'],
+                                                    'review':{'scoring_spec':{'path':'../analysis/评分细则.md','sha256':None},
+                                                              'rules':{'path':'../analysis/scoring_rules.json','sha256':None}},
                                                     'formulas':[],'boundary_cases':[],'status':'pending'})
         write_json(root/'review/project-plan.json',{'application':{'id':'replace-me','name':project_name,'version':'0.1.0'},
                                                     'scoring_inputs':[],'formula_bindings':[],
@@ -90,12 +96,12 @@ def initialize(pdf:Path,workbook:Path,report:Path,destination:Path,*,project_nam
         (root/'PROJECT_STAGE.md').write_text(
             '# 项目构建状态\n\n当前为 `review_required`，不是可运行或已批准的评分应用。\n\n'
             '1. 核对 `analysis/` 中的三文件盘点及原始文件哈希。\n'
-            '2. 按 PDF 原文完成 `review/rule-plan.json`，逐页标记 `reviewed_pages`，发布评分细则和待审问题。\n'
-            '3. 审核输入格、得分格和公式计划；在 Windows + Excel 上验证后形成带公式评分模板。\n'
+            '2. 先逐格盘点 Excel 的输入、得分及汇总单元格，将全部得分目标写入 `review/rule-plan.json` 的 `scope.score_targets`。\n'
+            '3. 按每个得分格的公式需求查找 PDF 条款并记录页码、原文证据；据此撰写面向 Excel 的 `评分细则.md` 和公式计划。在 Windows + Excel 上验证后形成带公式评分模板。\n'
             '4. 逐个解释 Word 标记并填写 `review/report-map-plan.json`；生成具名模板。\n'
             '5. 冻结项目配置、运行生成项目测试，再执行 Windows onedir 构建与隔离验收。\n',encoding='utf-8')
         root.replace(destination)
-    return {'status':'review_required','project':str(destination),'pages':pdf_doc.page_count,
+    return {'status':'review_required','project':str(destination),'pages':page_count,
             'workbook_cells':excel_inventory['nonempty_or_styled_cell_count'],'report_positions':len(markers['positions'])}
 
 

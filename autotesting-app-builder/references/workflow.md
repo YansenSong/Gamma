@@ -13,18 +13,30 @@ Record each source file's absolute input role, SHA-256, format, size, and readab
 
 ## Analysis and review
 
-Extract the charter with inspect_pdf.py, the workbook with inspect_excel.py, and the report document with inspect_report.py. Preserve the extraction inventory and SourceRefs beside the generated project. AI may summarize and propose interpretations; scripts supply structural facts and enforce deterministic checks.
+AI starts from the workbook. Use `inspect_excel.py` to enumerate every score cell, intermediate result and total, identify the existing formulas and input cells, and record the full target set in `review/rule-plan.json` as `scope.score_targets`. This set, including score cells whose PDF evidence is still missing, is the coverage denominator. Then search the charter for the rule each target requires. Read relevant PDF pages using selectable text, rendering, table extraction or OCR as needed; check equations, symbols and tables against the page image. `inspect_pdf.py` is optional, and its text is never assumed complete. Use `inspect_report.py` for the report inventory. Preserve PDF page citations and short verified excerpts beside each workbook target.
 
-After reviewing the PDF inventory, write a rule plan with `source_sha256` and a
-nonempty `rules` array. Each rule needs `id`, `statement`, `status` (`pending`
+After defining the Excel scope, write a rule plan with `source_sha256`, `scope` (`type: workbook`, `workbook_sha256`, and `score_targets`) and a
+nonempty `rules` array. Each rule needs `id`, `statement`, `target_cells`, `status` (`pending`
 or `confirmed`), and `source_refs` from the inventory; use `title` and
-`questions` where useful. Confirmed rules additionally need `reviewer` and
-`reviewed_at`. Publish it with `publish_scoring_rules.py` to produce
-`评分细则.md`, `scoring_rules.json`, and `open_questions.json`; the latter files carry the inventory hash
-and `release_blocked` whenever any rule remains pending, a PDF page is unreviewed,
-or an image-only page needs inspection. The plan's `reviewed_pages` lists pages
-actually checked for rule coverage. This publisher checks
-provenance, while AI and named reviewers remain responsible for rule meaning.
+`questions` where useful. For a pending business choice, use a structured question with `question`, `explanation`, and two or three `options`, each with `label` and `effect`; this keeps the Markdown record and chat choices aligned. Confirmed rules additionally need `reviewer` and
+`reviewed_at`. AI may identify itself as reviewer when the PDF clearly supports the rule; do not attribute an AI confirmation to a person. Publish it with `publish_scoring_rules.py` to produce
+`scoring_rules.json` and `open_questions.json`; use the readable `业务评审.md` as a user handoff only when substantive questions remain. These files carry the source hash
+and `release_blocked` whenever a rule remains pending, a workbook score target is uncovered, or a cited PDF page needs review. The plan's `reviewed_pages` lists relevant pages actually checked. An unrelated PDF page or clause is not a missing Excel requirement and does not trigger a user question. This publisher checks
+provenance, while AI remains responsible for source-supported interpretations and the user decides unresolved business alternatives. A rule plan may provide `evidence` records with a unique `ref`, one-based `page`, and short `text` excerpt read by AI. The publisher checks that the page exists, but cannot prove the excerpt matches the visible PDF; AI must verify it. Keep page coverage progress separate from questions that need a business decision.
+
+After resolving decisions needed by the workbook targets, AI writes `评分细则.md` itself. Follow
+`scoring-spec-writing.md` and use a user-provided detailed example as a guide to
+depth, not as a fixed template or a source for another project's facts. A script
+does not generate this Markdown. Run `validate_scoring_spec.py` to detect a stale
+PDF hash, missing rule IDs, or an unmarked pending draft, then review the actual
+content, calculations and decisions against the PDF.
+
+Use the already enumerated workbook targets to create a per-cell formula plan.
+Verify measured and judged inputs, units, row/column semantics and any existing formula against the cited rule.
+Bind the plan to the specification and structured rule hashes. Pending rules or
+uncertain workbook mappings may be staged for analysis, but cannot be committed
+to the project template. See `formula-authoring.md` for the commit gate and
+native Excel boundary checks.
 
 Create a concise business-facing review that includes:
 
@@ -34,9 +46,9 @@ Create a concise business-facing review that includes:
 - report values and their source lineage;
 - unresolved alternatives with example score differences when calculable.
 
-Ask for a human decision wherever alternatives can change scores or report claims. A reviewer decision records the person, time, reason, chosen interpretation, and the SHA-256 values it applies to. A custom interpretation includes its exact text.
+Ask the user only where the supplied documents and verified evidence leave multiple plausible alternatives that change scores or report claims. At each of the PDF-rule, Excel-formula, and report-mapping stages, first write the source-bound questions to the project's review document, then ask them in the active conversation. Group three or four related questions in one batch when that many remain; use fewer when appropriate. Each question states the exact uncertainty, citation or cell/marker position, why it matters, and two or three mutually exclusive choices with their effects on score, formula or report. Include a free-text path if none fits. Do not treat a suggested choice as user consent. A user decision records the person, time, reason, chosen interpretation, and applicable SHA-256 values; preserve the exact text of a custom answer. Update the review document and structured decision record before continuing dependent work. AI confirms clear cases itself and records its identity, time, evidence and reasoning; it must never impersonate a human reviewer.
 
-Before setting `release_status` to `business_validated`, also record named, dated, reasoned approvals bound to all source hashes for scoring rules, Excel mapping, report mapping, and calculation authority. Each resolved business decision must carry its own reviewer, decision time, reason, and source hashes.
+Before setting `release_status` to `business_validated`, record separate named, dated, reasoned confirmation records bound to all source hashes for scoring rules, Excel mapping, report mapping, and calculation authority. AI may record these for unambiguous, independently verified content under its own identity; this is automated provenance, not a claim of human sign-off. Every user-resolved business decision retains the user's identity, decision time, reason and source hashes. Missing real evidence or native Excel verification still blocks release.
 
 ## Generated project boundary
 
@@ -44,12 +56,11 @@ After formula authoring and native Excel validation, complete
 `review/excel-map-plan.json` with exact input/output addresses and source refs.
 Complete `review/report-map-plan.json` for every marker; use
 `review/report-positions.csv` for table row/column context, then call
-`map_report_template.py`. Give each position `review_status: confirmed` only
-after checking its meaning and source. Complete `review/project-plan.json` with
+`map_report_template.py`. AI gives a position `review_status: confirmed` after verifying one clear meaning and source; ask the user only for unresolved alternatives. Complete `review/project-plan.json` with
 the application ID and formula bindings. `freeze_project.py <project-root>`
 checks the reviewed mappings, actual workbook formulas and named report before
 writing a validated `engineering_sample` config. Windows + Excel calculation,
-business approvals and isolated onedir acceptance are separate later gates.
+source-bound confirmation records and isolated onedir acceptance are separate later gates.
 
 Create generated_apps/<project-name>/ with self-contained src/, config/, templates/, tests/, build.ps1, README.md, and delivery-manifest.json. Copy only required runtime components and templates. The application must run after the AutoTesting checkout is absent.
 
@@ -59,7 +70,7 @@ During generation, call the existing PDF, Excel, and DOCX analysis functions thr
 
 Use separate statuses:
 
-- engineering_sample: code/tests work on synthetic data; business approvals, real records, or target Excel recalculation remain missing.
+- engineering_sample: code/tests work on synthetic data; source-bound confirmations, real records, or target Excel recalculation remain missing.
 - business_validated: named rule/mapping/report reviews are complete, the required real evidence is checked, output values are independently verified, and deployment conditions pass.
 
 Never promote an engineering sample to business validated by changing a label.

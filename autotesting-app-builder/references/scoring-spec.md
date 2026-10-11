@@ -5,8 +5,9 @@ score evaluator, expression tree, reference score or fallback authority.
 
 A supplied workbook often contains no per-item scoring formulas at all: the score
 cells are bare and only aggregate `SUM` rows carry formulas, if anything. Bindings
-cannot exist until the formulas do. Derive them from the charter and write them
-back to the supplied Excel path after backup and native validation, then bind as usual — read formula-authoring.md. Authoring
+cannot exist until the formulas do. Inventory every workbook score target first,
+then locate its charter rule and derive its formula. Write formulas
+only to the `init_project.py` workspace copy at `templates/score.xlsx` after staged validation, native Excel boundary checks and a unique backup, then bind as usual — read formula-authoring.md. Keep the user's source workbook unchanged. Authoring
 does not shift authority: Excel evaluates every score either way, and a formula
 the Skill wrote is subject to the same review, source references and approval as
 one the user supplied.
@@ -30,10 +31,10 @@ projects without output mappings; such projects cannot perform scoring.
 }
 ```
 
-This is a synthetic illustration, not approved business logic. Human decisions
+This is a synthetic illustration, not approved business logic. Necessary user decisions
 bind the canonical SHA-256 of sheet/cell/formula through `decision_bindings`.
 Source hashes and four scoped approval content hashes must cover current material.
-A reviewer label does not alter a formula. Update an explicitly authorized
+A reviewer label, whether AI or human, does not alter a formula. Update an explicitly authorized
 workbook copy and obtain new approvals when a business decision changes formulas.
 
 Read scoring results only after native Excel full recalculation, workbook save,
@@ -42,4 +43,4 @@ missing, nonfinite, erroneous or wrong-type mapped results. Never replace a
 failed Excel calculation with a computed Python number or a sample value.
 
 Charter review may identify threshold, unit, cap, exception and rounding conflicts.
-It records human-review evidence; it does not run a second scoring implementation.
+It records AI interpretation evidence and any necessary user decisions; it does not run a second scoring implementation.

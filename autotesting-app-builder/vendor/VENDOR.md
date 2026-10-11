@@ -1,18 +1,12 @@
-# Vendored AutoTesting subset
+# Bundled inspection modules
 
-This directory holds the minimum subset of the AutoTesting repository that the
-Skill's inspection wrappers need. It exists because `autotesting-app-builder/`
-was copied out of its parent checkout: `scripts/_bootstrap.py` used to resolve
-the package root as `parents[4]`, which pointed at the repository root when the
-Skill lived inside it.
+This directory holds the small set of inspection modules required by the Skill.
+`scripts/_bootstrap.py` resolves them from this directory, so a live source
+checkout is not needed.
 
-It sits inside the Skill folder (`autotesting-app-builder/vendor/`), so the
-Skill is one self-contained directory. Nothing here is generated: it is a frozen
-copy, and the Skill reads it but never writes to it.
-
-- Upstream repository: `D:/实习/汽研/测评`
-- Upstream revision: `8d65005f66bc0bb942589613d3b65fb2d724fa6a` (2026-10-10)
-- Vendored on: 2026-10-10
+It sits inside the Skill folder (`autotesting-app-builder/vendor/`). Nothing
+here is generated during project work; the Skill reads these frozen modules but
+does not write to them.
 
 ## Why each file is here
 
@@ -28,14 +22,14 @@ copy, and the Skill reads it but never writes to it.
 | `ivista_reporting/template_contract.py` | `template_inspector` |
 
 `ivista_engine/authoring/__init__.py` and `ivista_reporting/__init__.py` are
-copied verbatim (both are empty upstream).
+empty package initialisers.
 
-## Modifications from upstream
+## Deliberately limited imports
 
-Only two files differ, both package initialisers that had to be trimmed:
+Two package initialisers expose only the inspection modules needed here:
 
 - `ivista_engine/__init__.py` — dropped the `evaluate` / `load_rulepack`
-  re-exports. Upstream's versions import `ivista_engine.rules.*`, which pulls in
+  re-exports. Those imports pull in `ivista_engine.rules.*`, which includes
   the whole rule engine and RulePack loader; the Skill's wrappers never call
   them, and the Skill is explicitly forbidden from shipping a Python scoring
   path (`references/scoring-spec.md`).
@@ -43,7 +37,7 @@ Only two files differ, both package initialisers that had to be trimmed:
   `CharterCompiler` re-exports for the same reason (rule synthesis, markdown
   services). `PdfExtractor` / `PdfPlumberExtractor` are retained.
 
-Everything else is byte-identical to upstream. Upstream SHA-256 values:
+SHA-256 values for the eight bundled implementation files:
 
 ```
 eaef5ba4656094fae9b60edc3f8c35586f179d85acb1474f48ed84491fc34b56  ivista_engine/charter/pdf_extractor.py
@@ -58,7 +52,6 @@ a991632b4348819d55db495de0fe4168cc47d01fb138a01e4edbadcbd5d7295f  ivista_reporti
 
 ## Currency
 
-This is a frozen copy. If the upstream packages change, re-copy the files above
-and update this document. Upstream files that depend on the rule engine should
-not be vendored: the generated applications must not contain a Python scoring
-implementation.
+This is a frozen copy. If these modules are updated, verify their imports and
+update the hashes above. Do not add modules that bring in a Python scoring
+implementation; generated applications use Excel formulas as their authority.

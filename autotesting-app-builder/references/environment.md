@@ -22,7 +22,7 @@ deliberately kept outside the folder:
     references/
     scripts/
     vendor/                    frozen AutoTesting subset
-      VENDOR.md                upstream revision and per-file SHA-256
+      VENDOR.md                bundled module inventory and per-file SHA-256
       ivista_engine/
       ivista_reporting/
     requirements.txt
@@ -54,9 +54,9 @@ inspection wrappers.
 
 ## Vendored subset
 
-`vendor/` holds eight modules plus package initialisers, copied from
-`D:/实习/汽研/测评` at revision `8d65005f`. `vendor/VENDOR.md` lists every file,
-its upstream SHA-256, and the two initialisers that were trimmed.
+`vendor/` holds eight inspection modules plus package initialisers.
+`vendor/VENDOR.md` lists every implementation file, its SHA-256, and the two
+initialisers with deliberately limited imports.
 
 Two upstream initialisers were emptied because they re-exported the rule engine
 (`ivista_engine.rules.*`, `CharterCompiler`), which the Skill must never carry:
@@ -120,8 +120,7 @@ caused by a missing package is not reported as a damaged vendor file.
 
 ## What self-containment does not cover
 
-The vendored modules are byte-identical to upstream except for the two trimmed
-initialisers, but this is a *copy*. Verdicts that upstream reviewers justified
-against the live repository do not automatically transfer. Record the vendored
-revision in every delivery manifest, and re-run `check_environment.py` when the
+These modules are bundled copies, so tests or conclusions from another checkout
+do not automatically transfer. Record the bundled file hashes from `VENDOR.md`
+in delivery evidence when relevant, and re-run `check_environment.py` when the
 Skill moves to another host.

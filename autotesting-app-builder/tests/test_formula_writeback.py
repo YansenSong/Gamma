@@ -30,6 +30,8 @@ class FormulaWritebackTests(unittest.TestCase):
         self.manifest = self.root / "stage.json"
         self.evidence = self.root / "native.json"
         self.receipt = self.root / "receipt.json"
+        self.scoring_spec = self.root / "评分细则.md"
+        self.rules = self.root / "rules.json"
 
     def fixture(self, mode):
         book = Workbook(); ws = book.active; ws.title = "评分"
@@ -50,9 +52,16 @@ class FormulaWritebackTests(unittest.TestCase):
             formulas.append({"sheet": "评分", "cell": f"C{row}", "original": None,
                              "formula": f"=IF(B{row}<=10,2,0)", "inputs": [f"评分!B{row}"],
                              "pdf_refs": [{"page": 1, "location": f"rule-{row}"}],
-                             "rule_explanation": "输入不超过 10 得 2 分", "boundary_checks": [10, 11], "risks": []})
+                             "rule_explanation": "输入不超过 10 得 2 分", "boundary_checks": [10, 11], "risks": [],
+                             "rule_ids": ["R1"], "review_status": "confirmed", "reviewer": "Fixture reviewer",
+                             "reviewed_at": "2026-10-10T12:00:00+08:00"})
+        self.scoring_spec.write_text('# 构造评分细则\n\nPDF: '+ 'a'*64 +'\n\nR1',encoding='utf-8')
+        self.rules.write_text(json.dumps({'source_sha256':'a'*64,'release_blocked':False,
+                                          'rules':[{'id':'R1','status':'confirmed'}]}),encoding='utf-8')
         expected = [{"sheet": "评分", "cell": f"C{r}", "value": 2} for r in ((3,) if mode == "partial" else (2, 3))]
         self.plan = {"workbook": str(self.source), "source_sha256": original, "formulas": formulas,
+                     "review":{"scoring_spec":{"path":str(self.scoring_spec),"sha256":writer.sha(self.scoring_spec)},
+                               "rules":{"path":str(self.rules),"sha256":writer.sha(self.rules)}},
                      "boundary_cases": [{"inputs": [{"sheet": "评分", "cell": "B2", "value": 10},
                                                     {"sheet": "评分", "cell": "B3", "value": 10}], "expected": expected},
                                         {"inputs": [{"sheet": "评分", "cell": "B2", "value": 11},
@@ -136,6 +145,21 @@ class FormulaWritebackTests(unittest.TestCase):
                 writer.commit(self.plan_path, self.manifest, self.evidence, self.receipt)
         self.assertEqual(writer.sha(self.source), original)
         self.assertFalse(list(self.root.glob("*.backup-*")))
+
+    def test_pending_or_changed_spec_blocks_commit_before_excel(self):
+        original=self.fixture("empty")
+        writer.prepare(self.plan_path,self.staged,self.manifest)
+        self.plan['formulas'][0]['review_status']='pending'
+        self.plan_path.write_text(json.dumps(self.plan,ensure_ascii=False),encoding='utf-8')
+        with self.assertRaisesRegex(ValueError,'named confirmation'):
+            writer.commit(self.plan_path,self.manifest,self.evidence,self.receipt)
+        self.assertEqual(writer.sha(self.source),original)
+        self.assertFalse(self.evidence.exists())
+        self.plan['formulas'][0]['review_status']='confirmed'
+        self.plan_path.write_text(json.dumps(self.plan,ensure_ascii=False),encoding='utf-8')
+        self.scoring_spec.write_text(self.scoring_spec.read_text(encoding='utf-8')+'\nchanged',encoding='utf-8')
+        with self.assertRaisesRegex(ValueError,'scoring_spec file changed'):
+            writer.commit(self.plan_path,self.manifest,self.evidence,self.receipt)
 
     def test_cycle_and_occupied_cell_block_prepare(self):
         original = self.fixture("empty")

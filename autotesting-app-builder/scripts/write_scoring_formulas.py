@@ -35,6 +35,37 @@ def plan_hash(plan):
     return hashlib.sha256(json.dumps(plan, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
 
 
+def validate_review_for_commit(plan, *, base):
+    """Bind writeback to the AI-authored specification and named rule review."""
+    review = plan.get("review", {})
+    if not isinstance(review, dict):
+        raise ValueError("formula review binding is required before commit")
+    files = {}
+    for key in ("scoring_spec", "rules"):
+        item = review.get(key)
+        if not isinstance(item, dict) or not item.get("path") or not item.get("sha256"):
+            raise ValueError(f"review {key} path and SHA-256 are required before commit")
+        path = (base / item["path"]).resolve()
+        if not path.is_file() or sha(path) != item["sha256"]:
+            raise ValueError(f"review {key} file changed or is missing")
+        files[key] = path
+    from validate_scoring_spec import validate as validate_spec
+    verdict = validate_spec(files["scoring_spec"], files["rules"])
+    if verdict["status"] != "passed":
+        raise ValueError("scoring specification identity or rule coverage failed: " + "; ".join(verdict["issues"]))
+    rules = json.loads(files["rules"].read_text(encoding="utf-8"))
+    by_id = {rule["id"]: rule for rule in rules.get("rules", [])}
+    for entry in plan["formulas"]:
+        target = f"{entry['sheet']}!{entry['cell']}"
+        ids = entry.get("rule_ids")
+        if (not isinstance(ids, list) or not ids or any(not isinstance(identifier, str) or
+                identifier not in by_id or by_id[identifier].get("status") != "confirmed" for identifier in ids)):
+            raise ValueError(f"formula {target} needs confirmed scoring rule IDs")
+        if (entry.get("review_status") != "confirmed" or not entry.get("reviewer")
+                or not entry.get("reviewed_at")):
+            raise ValueError(f"formula {target} needs named confirmation before commit")
+
+
 def _parts(archive):
     wb = ET.fromstring(archive.read("xl/workbook.xml"))
     rels = ET.fromstring(archive.read("xl/_rels/workbook.xml.rels"))
@@ -246,6 +277,7 @@ def prepare(plan_path, staged_path, manifest_path):
 def commit(plan_path, manifest_path, evidence_path, receipt_path):
     plan = json.loads(Path(plan_path).read_text(encoding="utf-8"))
     source, _ = validate_plan(plan, base=Path(plan_path).resolve().parent)
+    validate_review_for_commit(plan, base=Path(plan_path).resolve().parent)
     manifest = json.loads(Path(manifest_path).read_text(encoding="utf-8"))
     staged = Path(manifest["staged_path"]).resolve()
     if staged == source or not staged.is_file():
@@ -274,6 +306,7 @@ def commit(plan_path, manifest_path, evidence_path, receipt_path):
     if (plan_hash(json.loads(Path(plan_path).read_text(encoding="utf-8"))) != manifest["plan_sha256"]
             or sha(source) != manifest["source_sha256"] or sha(staged) != manifest["staged_sha256"]):
         raise ValueError("plan or workbook changed during native Excel validation")
+    validate_review_for_commit(plan, base=Path(plan_path).resolve().parent)
     before = sha(source)
     backup = source.with_name(source.name + f".backup-{uuid.uuid4().hex}")
     with source.open("rb") as inp, backup.open("xb") as out:
@@ -283,6 +316,8 @@ def commit(plan_path, manifest_path, evidence_path, receipt_path):
     receipt = {"status": "engineering_sample", "original_path": str(source), "original_sha256": before,
                "backup_path": str(backup), "backup_sha256": sha(backup), "new_sha256": sha(staged),
                "plan_sha256": plan_hash(plan), "native_excel_evidence_sha256": sha(evidence_path),
+               "scoring_spec_sha256": plan["review"]["scoring_spec"]["sha256"],
+               "rules_sha256": plan["review"]["rules"]["sha256"],
                "modified_cells": [{k: e[k] for k in ("sheet", "cell", "formula", "pdf_refs")} for e in plan["formulas"]]}
     receipt_path.parent.mkdir(parents=True, exist_ok=True)
     if receipt_path.exists():

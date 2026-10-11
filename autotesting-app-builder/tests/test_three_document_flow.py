@@ -48,11 +48,20 @@ class ThreeDocumentFlow(unittest.TestCase):
             sheet["B2"].number_format = "0"
             book.save(xlsx); book.close()
             original = writer.sha(xlsx)
+            spec=root/'评分细则.md';rules=root/'rules.json'
+            pdf_hash=writer.sha(pdf)
+            spec.write_text('# 构造评分细则\n\nPDF: '+pdf_hash+'\n\nR1: '+clause,encoding='utf-8')
+            rules.write_text(json.dumps({'source_sha256':pdf_hash,'release_blocked':False,
+                                         'rules':[{'id':'R1','status':'confirmed'}]}),encoding='utf-8')
             plan = {"workbook": str(xlsx), "source_sha256": original,
+                    "review":{"scoring_spec":{"path":str(spec),"sha256":writer.sha(spec)},
+                              "rules":{"path":str(rules),"sha256":writer.sha(rules)}},
                     "formulas": [{"sheet": "Score", "cell": "B2", "original": None,
                                   "formula": "=IF(A2<=10,2,0)", "inputs": ["Score!A2"],
                                   "pdf_refs": [{"page": 1, "location": "text line 1"}],
-                                  "rule_explanation": clause, "boundary_checks": [10, 11], "risks": []}],
+                                  "rule_explanation": clause, "boundary_checks": [10, 11], "risks": [],
+                                  "rule_ids":["R1"],"review_status":"confirmed","reviewer":"Fixture reviewer",
+                                  "reviewed_at":"2026-10-10T12:00:00+08:00"}],
                     "boundary_cases": [{"inputs": [{"sheet": "Score", "cell": "A2", "value": value}],
                                         "expected": [{"sheet": "Score", "cell": "B2", "value": expected}]}
                                        for value, expected in ((10, 2), (11, 0))]}

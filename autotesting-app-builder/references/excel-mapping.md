@@ -1,6 +1,6 @@
 # Excel analysis and mapping
 
-Use the workbook analyzer as a read-only inventory. Record the source SHA-256, worksheets, cells, formulas, merged ranges, validations, names, protection, and unsupported features. Semantic matches are proposals until a human reviews labels, units, cell role, type, and scoring relationship.
+Use the workbook analyzer as a read-only inventory. Record the source SHA-256, worksheets, cells, formulas, merged ranges, validations, names, protection, and unsupported features. AI checks labels, units, cell role, type and scoring relationship, and directly confirms a unique, source-supported match. Ask the user only when multiple plausible mappings remain or the materials omit a required meaning.
 
 Keep mappings hash-bound to the exact workbook and rule specification. Outputs are written to a new copy. Preserve styles and unrelated values. Reject macro-enabled workbooks or workbook features the selected writer cannot preserve.
 
