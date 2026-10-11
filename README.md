@@ -7,6 +7,7 @@
 | 目录 | 内容 |
 | --- | --- |
 | [`autotesting-app-builder/`](autotesting-app-builder/README.md) | 技能说明、执行规范、脚本、应用模板和测试。 |
+| [`docs/`](docs/技能工作流.md) | 技能的详细中文工作流说明。 |
 | [`test-materials/`](test-materials/) | 用于验证技能的评分章程 PDF、评分 Excel 和检验报告 Word 模板。 |
 
 三份测试输入分别是：[评分章程](test-materials/智能行车评分章程.pdf)、[评分 Excel](test-materials/智能行车评分Excel.xlsx)和[检验报告模板](test-materials/智能行车检验报告模板.docx)。它们用于验证技能；处理其他项目时，应提供该项目自己的三份材料。其中 Word 模板的 `{{ }}` 位置用于自动填充；报告其他内容和格式保持原样。
