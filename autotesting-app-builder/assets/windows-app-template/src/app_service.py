@@ -3,11 +3,10 @@ from __future__ import annotations
 import hashlib,json,shutil,subprocess,sys,tempfile,uuid,math
 from datetime import datetime,timezone
 from pathlib import Path
-from docxtpl import DocxTemplate
+from review_preview import render_report_template
 from openpyxl import load_workbook
 from input_validation import validate_facts,InputValidationError
 from project_validation import validate as validate_project,docx_markers
-from report_safety import mark_engineering_copy, requires_draft
 
 def resource_path(name): return Path(getattr(sys,"_MEIPASS",Path(__file__).resolve().parents[1]))/name
 def load_spec(): return json.loads(resource_path("config/project.json").read_text(encoding="utf-8"))
@@ -125,19 +124,14 @@ def run_job_from_facts(facts_raw,output_dir):
         if not report_expected or digest(report_template)!=report_expected:raise InputValidationError("报告模板 SHA-256 与项目配置不符")
         audit_id=uuid.uuid4().hex
         context=report_context(rcfg["fields"],facts,scores,{"excel_version":recalc.get("version") or "未记录","audit_id":audit_id})
-        draft=requires_draft(spec)
-        policy=spec.get('report_safety',{'provenance':'工程样例数据，业务规则与原始试验来源未获正式审批。'})
-        if draft:
-            for key in policy.get('legacy_result_fields',[]):
-                context[key]=str(context[key])+policy.get('result_suffix','（工程参考值）')
         markers=docx_markers(report_template)["names"]
         if markers!=set(rcfg["fields"]):
             undeclared=sorted(markers-set(rcfg["fields"]));unmarked=sorted(set(rcfg["fields"])-markers)
             details=[text for text in ("模板中未声明的标记："+", ".join(undeclared) if undeclared else "",
                                        "无对应模板标记的报告字段："+", ".join(unmarked) if unmarked else "") if text]
             raise InputValidationError("报告模板填充标记与配置不一致："+"; ".join(details))
-        docx=stage/f"{app['id']}-report.docx"; document=DocxTemplate(str(report_template)); document.render(context); document.save(str(docx))
-        visible_status=mark_engineering_copy(docx,policy) if draft else {'status':'business_validated'}
+        docx=stage/f"{app['id']}-report.docx"; render_report_template(report_template,docx,context)
+        visible_status={'status':spec.get('release_status','engineering_sample'),'display':'audit_only'}
         audit={"schema_version":"autotesting-run-audit-v1","release_status":spec.get("release_status","engineering_sample"),"visible_report_status":visible_status,
           "project_id":app["id"],"audit_id":audit_id,"timestamp_utc":datetime.now(timezone.utc).isoformat(timespec="seconds"),
           "project_spec_sha256":digest(resource_path("config/project.json")),"workbook_template_sha256":digest(workbook_template),
@@ -240,14 +234,9 @@ def run_job_from_workbook(input_path, output_dir):
         if not report_expected or digest(report_template)!=report_expected:raise InputValidationError('报告模板 SHA-256 与项目配置不符')
         audit_id=uuid.uuid4().hex
         context=report_context(rcfg['fields'],facts,scores,{'excel_version':recalc['version'],'audit_id':audit_id})
-        draft=requires_draft(spec)
-        policy=spec.get('report_safety',{'provenance':'工程样例数据，业务规则与原始试验来源未获正式审批。'})
-        if draft:
-            for key in policy.get('legacy_result_fields',[]):
-                context[key]=str(context[key])+policy.get('result_suffix','（工程参考值）')
         if docx_markers(report_template)['names']!=set(rcfg['fields']):raise InputValidationError('报告模板标记与配置不一致')
-        docx=stage/f"{app['id']}-report.docx";document=DocxTemplate(str(report_template));document.render(context);document.save(str(docx))
-        visible_status=mark_engineering_copy(docx,policy) if draft else {'status':'business_validated'}
+        docx=stage/f"{app['id']}-report.docx";render_report_template(report_template,docx,context)
+        visible_status={'status':spec.get('release_status','engineering_sample'),'display':'audit_only'}
         audit={'schema_version':'autotesting-run-audit-v1','release_status':spec.get('release_status','engineering_sample'),
                'visible_report_status':visible_status,'project_id':app['id'],'audit_id':audit_id,
                'timestamp_utc':datetime.now(timezone.utc).isoformat(timespec='seconds'),

@@ -12,6 +12,6 @@ Existing values lack verified trial provenance unless supplied evidence establis
 
 For driving, retain all Q1–Q10 in `docs/评分细则候选/driving/business_decisions.json`, preserving pending decisions. Changing calculation authority cannot silently resolve them.
 
-Generate project code from the three source documents and analysis. Old adapters/RulePacks may run only as comparison references. Missing mappings or review decisions require a blocked validation state and an actionable checklist. An engineering preview may display “未提供” and engineering-draft labels, but must refuse official release and disclose incomplete comparisons. Never mark a whole category validated after checking a subset.
+Generate project code from the three source documents and analysis. Old adapters/RulePacks may run only as comparison references. Missing mappings or review decisions require a blocked validation state and an actionable checklist. An engineering preview may fill mapped placeholders with “未提供”, but must refuse official release and disclose incomplete comparisons in its separate audit and UI. Do not add labels or alter static content in the DOCX. Never mark a whole category validated after checking a subset.
 
 Keep native Excel results separate from LibreOffice-only regression results. Missing LibreOffice is an environment error, never a passed test. Deliver source hashes, per-cell comparisons, process logs, screenshots, page checks, self-contained onedir package and honest per-category status.

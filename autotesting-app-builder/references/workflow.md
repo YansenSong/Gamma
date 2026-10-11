@@ -15,6 +15,22 @@ Record each source file's absolute input role, SHA-256, format, size, and readab
 
 AI starts from the workbook. Use `inspect_excel.py` to enumerate every score cell, intermediate result and total, identify the existing formulas and input cells, and record the full target set in `review/rule-plan.json` as `scope.score_targets`. This set, including score cells whose PDF evidence is still missing, is the coverage denominator. Then search the charter for the rule each target requires. Read relevant PDF pages using selectable text, rendering, table extraction or OCR as needed; check equations, symbols and tables against the page image. `inspect_pdf.py` is optional, and its text is never assumed complete. Use `inspect_report.py` for the report inventory. Preserve PDF page citations and short verified excerpts beside each workbook target.
 
+Before the PDF search, write a human-readable and machine-readable Excel scoring
+map as described in `excel-mapping.md`. It must identify the evaluation item,
+specific scenario, performance/result represented by each input column, exact
+input and output addresses, and the formula question for every score target.
+Record real-entry formats and blank semantics as confirmed or pending. The PDF
+then answers how the mapped performance becomes a score; it must not silently
+redefine the workbook's fields.
+
+Treat the workbook's existing input cells as the input contract. Before recording
+an input-mapping question, inspect whether existing tiers or status columns
+already express the PDF case, including zero-score outcomes. Do not convert a
+PDF exception into a new input requirement merely because it has no dedicated
+column. If no existing representation works for a required Excel target, leave
+that target pending and document the specific gap; a proposed new cell or
+external record is a schema change, not an automatic review option.
+
 After defining the Excel scope, write a rule plan with `source_sha256`, `scope` (`type: workbook`, `workbook_sha256`, and `score_targets`) and a
 nonempty `rules` array. Each rule needs `id`, `statement`, `target_cells`, `status` (`pending`
 or `confirmed`), and `source_refs` from the inventory; use `title` and
@@ -24,12 +40,14 @@ or `confirmed`), and `source_refs` from the inventory; use `title` and
 and `release_blocked` whenever a rule remains pending, a workbook score target is uncovered, or a cited PDF page needs review. The plan's `reviewed_pages` lists relevant pages actually checked. An unrelated PDF page or clause is not a missing Excel requirement and does not trigger a user question. This publisher checks
 provenance, while AI remains responsible for source-supported interpretations and the user decides unresolved business alternatives. A rule plan may provide `evidence` records with a unique `ref`, one-based `page`, and short `text` excerpt read by AI. The publisher checks that the page exists, but cannot prove the excerpt matches the visible PDF; AI must verify it. Keep page coverage progress separate from questions that need a business decision.
 
-After resolving decisions needed by the workbook targets, AI writes `评分细则.md` itself. Follow
-`scoring-spec-writing.md` and use a user-provided detailed example as a guide to
-depth, not as a fixed template or a source for another project's facts. A script
-does not generate this Markdown. Run `validate_scoring_spec.py` to detect a stale
-PDF hash, missing rule IDs, or an unmarked pending draft, then review the actual
-content, calculations and decisions against the PDF.
+After resolving decisions needed by the workbook targets, AI writes `评分细则.md` itself.
+Follow `scoring-spec-writing.md`: organize it by the Excel score targets and use
+only their relevant PDF evidence. A user-provided example may guide presentation,
+but cannot add PDF-only scoring items to the workbook-defined scope or supply
+another project's facts. A script does not generate this Markdown. Run
+`validate_scoring_spec.py` to detect a stale PDF hash, missing rule IDs, or an
+unmarked pending draft, then review the actual content, calculations and decisions
+against the PDF and Excel map.
 
 Use the already enumerated workbook targets to create a per-cell formula plan.
 Verify measured and judged inputs, units, row/column semantics and any existing formula against the cited rule.

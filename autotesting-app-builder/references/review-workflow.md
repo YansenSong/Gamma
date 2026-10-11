@@ -67,12 +67,13 @@ merely to make an empty cache disappear.
 ## Unscored engineering preview
 
 Blocked review projects may configure `review_preview` and the reusable
-`review_preview.py`, `report_safety.py`, `field_review_ui.py` modules. The preview
+`review_preview.py` and `field_review_ui.py` modules. The preview
 produces a DOCX and audit in one staged directory. It does not score or create a
 workbook. Optional identity entries are marked user-supplied/unverified; all
 unmapped result fields remain “未提供”. No grade, collision, completion, signature,
 report number or signing date is inferred from examples. General scoring output
-buttons remain blocked. Use the exact current template hash and visibly mark
-the first page, every page and any signature boxes. Review copied static text for
-claims about formal scoring authority and override them explicitly in the copy's
-safety policy when necessary. Render and inspect every current preview page.
+buttons remain blocked. Use the exact current template hash; fill only mapped
+markers and preserve all static text, formatting, headers, footers and signature
+boxes. Put blocked status and provenance in the audit and UI. Flag any static
+claim about formal scoring authority for human review without rewriting it in
+the DOCX. Render and inspect every current preview page.

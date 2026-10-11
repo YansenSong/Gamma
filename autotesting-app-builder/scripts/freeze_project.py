@@ -76,8 +76,7 @@ def freeze(root:Path):
                      'authority':{'type':'Microsoft Excel','require_full_recalculation':True,
                                   'recalculation_script':'scripts/recalculate_excel.ps1'}},
           'excel_output':{'template':'templates/score.xlsx','input_cells':inputs,'output_cells':outputs},
-          'report_output':{'template':'templates/report.docx','fields':fields},
-          'report_safety':{'provenance':'工程核对稿：规则和真实业务数据尚未完成正式审批。'}}
+          'report_output':{'template':'templates/report.docx','fields':fields}}
     # Validation runs against a temporary config, leaving the placeholder intact on error.
     staged=root/'config/project.pending.json';write_json(staged,spec)
     try:validate_project(staged)

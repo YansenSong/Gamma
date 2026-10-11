@@ -26,9 +26,16 @@ Inventory every variable once, retaining every Word location. Each item must inc
 
 Use A for real information to be supplied by the user, B for explicitly identified existing-file candidates pending semantic/unit/source review, C for not-applicable dispositions with an identified reviewer and evidence, and D for missing trial/conclusion facts. AI may confirm a clearly evidenced source or not-applicable disposition under its own identity; ask the user if the evidence admits competing readings. Category and official blocking are separate axes: A and B can still block. Never classify absent results as not applicable without evidence. Scores cannot establish completion or collision facts. Optional form entries remain user-supplied unverified data until reviewed; reset them when importing another record.
 
-## Visible engineering copy
+## Template fidelity
 
-For engineering_sample or blocked projects, use the template's report_safety helper on generated copies: visible engineering identity on the first page, persistent header/footer notices on every page, and a source disclaimer alongside key scores/grades. Configure the exact source disclaimer in each project; read scoring values only from native Excel formula results. Mark signature boxes as unapproved; never fill reviewers, conclusions or dates from examples. The original DOCX must keep its SHA-256. Record changed parts and any preserved erroneous page-count text. Render the latest copy with the selected native tool and inspect every page; a JSON release flag is insufficient.
+Fill only confirmed `{{ field_id }}` positions. Do not add an engineering label,
+disclaimer, watermark, header/footer notice, suffix, or signature text to the
+DOCX, even when the project is an engineering sample or blocked. Put release
+status, provenance, missing evidence and approval state in the separate audit
+file and application UI. Do not rewrite static claims in the report template;
+surface a conflicting claim for review instead. Keep the supplied DOCX hash,
+compare all non-marker content and formatting with the named template, render
+the latest copy, and inspect every page.
 
 Expose report_review.path in project configuration to show the read-only, searchable FieldReviewDialog and export the checklist. Optional data-entry fields are declared in scoring.inputs with required=false; they must not become scoring facts or approval records merely through user entry.
 

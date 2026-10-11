@@ -1,42 +1,25 @@
-# AI writing of the scoring specification
+# 评分细则的编写范围与方法
 
-`评分细则.md` is an authored business document organized by the supplied Excel
-score targets. AI first lists each target and its formula needs, then reads the
-corresponding PDF evidence, rule plan and completed business review. AI confirms
-clear interpretations directly and asks the user only about ambiguity that changes
-a target score, indispensable input mapping or required report claim. No script
-assembles its paragraphs, tables, formulas, ordering, or level of detail.
+`评分细则.md` 是针对**本次 Excel 评分表**编写的业务说明，不是把 PDF 中每一个评分项重新整理一遍。先盘点工作簿里全部需要计算的得分率、分项分数、小计和总分单元格，再逐项查找 PDF 中足以计算它们的条款、表格和前提。Excel 目标单元格定义覆盖范围，PDF 提供评分依据。
 
-Read `examples/README.md` and the bundled
-`examples/IVISTA_2026_智能行车评分细则整理.md` as a style and depth reference,
-not as a source of facts for a new project. If the user supplies a different
-example, follow that preference. The bundled example's useful
-pattern is a complete score framework followed by prerequisites, input and unit
-definitions, detailed per-item decisions, formulas, boundaries, caps, exceptions,
-and concrete tables for tiers and scenarios. Adapt the outline to the actual
-charter; do not force unrelated charters into those headings.
+## 以 Excel 目标单元格组织正文
 
-For every workbook score target, make it possible for a reviewer to determine:
+按工作簿原有评分维度和场景分组。每组列出目标单元格、人工输入单元格、各输入列的含义、对应 PDF 页码和规则 ID，再解释计算方法。共享同一规则的重复场景可以用表格合并说明，但每个目标单元格都必须能被追溯，不能因为合并叙述而漏掉某行。
 
-- the exact sheet/cell, its input addresses, and the PDF page/table supporting it;
+每个目标至少说明：
 
-- what is measured, which valid test event supplies it, and its unit;
-- how each threshold and equality boundary is treated;
-- how scores, deductions, rounding, caps and totals are calculated;
-- what happens when an input is absent, invalid, exempt or contradictory;
-- which PDF page supports the interpretation and which business review decision
-  resolves any ambiguity.
+- 具体工作表与单元格，以及用于计算它的输入地址、单位和填写含义；
+- 对应 PDF 的页码、条款或表格；
+- 分档、等号边界、扣分、上限、平均、舍入和汇总方式中与该单元格有关的内容；
+- 空白、明确填 0、未发生、无效或矛盾输入分别如何处理；
+- PDF 无法决定、但会改变得分的业务问题及其用户决定。
 
-Record other PDF scoring clauses as out of scope if useful for audit, without
-turning their absence from this workbook into a clarification request. A target
-whose rule is missing or unsupported stays visibly pending.
+对 PDF 中**没有对应 Excel 评分目标**的条款，可以在范围说明或审计记录中标为“本工作簿范围外”；不要为了让细则显得完整而把它们扩展成新评分项、输入列或公式。若 Excel 目标找不到足够的 PDF 依据，该目标保持待确认，不能借用其他场景的规则补齐。
 
-Use tables for repeated scenarios or tiers when they improve readability. Include
-the PDF SHA-256 and stable rule IDs somewhere in the document so a separate check
-can detect stale or omitted content. A pending decision must be visibly marked;
-do not present the document as final while the relevant rule remains unresolved.
+## 写作和核对
 
-Run `scripts/validate_scoring_spec.py <评分细则.md> <scoring_rules.json>` after
-writing. It checks source identity, rule ID coverage and a visible draft label.
-It cannot assess prose quality, correct formulas, or whether a reviewer decision
-was faithfully applied. Review those against the source PDF and signed opinions.
+AI 根据 Excel 映射、对应 PDF 证据、结构化规则计划和已记录的业务决定编写正文。脚本不负责拼装段落或推断分数。用户提供的写作样例可以参考表达方式，但不能改变 Excel 定义的范围，也不能提供本项目的阈值、分数或结论；本技能不附带跨项目的评分细则范例。
+
+重复的场景或档位可用表格提高可读性。文档应包含本次 PDF 的 SHA-256 和稳定规则 ID，以便检查来源与覆盖。待确认问题要在评分细则中明确标出，不得把未解决的规则写成最终结论。
+
+完成后运行 `scripts/validate_scoring_spec.py <评分细则.md> <scoring_rules.json>`。该工具检查来源哈希、规则 ID 覆盖和待确认标记；它不能判断文字解释、公式或用户决定是否正确，仍须逐项对照原始 PDF 和 Excel。

@@ -18,6 +18,7 @@ import sys
 from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
+from unittest.mock import patch
 from docx import Document
 from openpyxl import Workbook
 
@@ -54,8 +55,7 @@ class ReviewWorkflowTests(unittest.TestCase):
                            'fields':{'name':{'kind':'input','id':'report_name'},
                                      'score':{'kind':'score','id':'score'}}},
           'report_review':{'path':'config/report-field-review.json'},
-          'review_preview':{'metadata_fields':{'name':{'label':'Name','input_id':'report_name'}},
-                            'report_safety':{'provenance':'Synthetic unscored review'}}}
+          'review_preview':{'metadata_fields':{'name':{'label':'Name','input_id':'report_name'}}}}
         workflow.write(self.root/'config/project.json',self.spec)
         workflow.write(self.root/'analysis/report.json',{'body':[],'source_sha256':sources[-1]['sha256']})
         self.review=inventory.build(self.root);workflow.write(self.root/'config/report-field-review.json',self.review)
@@ -150,18 +150,21 @@ class ReviewWorkflowTests(unittest.TestCase):
         workflow.export_package(self.root,self.destination)
         with self.assertRaisesRegex(ValueError,'every current template variable'):self.check()
 
-    def test_preview_marks_metadata_and_never_scores(self):
+    def test_preview_fills_only_markers_and_never_scores(self):
         before=(self.root/'templates/report.docx').read_bytes()
         result=preview.create_review_preview(self.spec,{'report_name':'A<&','score':100},self.root/'output',lambda p:self.root/p)
         document=Document(result['report']);text='\n'.join(p.text for p in document.paragraphs)
-        self.assertIn('A<&（用户补录，未核验）',text);self.assertIn('Score: 未提供',text);self.assertNotIn('100',text)
+        self.assertIn('A<&',text);self.assertNotIn('用户补录，未核验',text)
+        self.assertIn('Score: 未提供',text);self.assertNotIn('100',text)
+        self.assertNotIn('工程核对稿',text)
         audit=workflow.read(result['audit']);self.assertFalse(audit['scoring_performed']);self.assertEqual(audit['missing_fields'],['score'])
         self.assertEqual(before,(self.root/'templates/report.docx').read_bytes())
         self.assertEqual({p.name for p in Path(result['bundle']).iterdir()},{'engineering-review.docx','engineering-review-audit.json'})
 
     def test_preview_failure_rolls_back_pair(self):
-        self.spec['review_preview']['report_safety']={}
-        with self.assertRaises(KeyError):preview.create_review_preview(self.spec,{},self.root/'output',lambda p:self.root/p)
+        with patch.object(preview,'render_review_template',side_effect=RuntimeError('render failed')):
+            with self.assertRaisesRegex(RuntimeError,'render failed'):
+                preview.create_review_preview(self.spec,{},self.root/'output',lambda p:self.root/p)
         self.assertEqual(list((self.root/'output').iterdir()),[])
 
     def test_preview_requires_template_and_inventory_identity(self):

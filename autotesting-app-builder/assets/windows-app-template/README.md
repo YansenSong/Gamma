@@ -1,33 +1,7 @@
-# Windows scoring app template
+# Windows 评分应用模板
 
-Copy this directory into a new generated project, then replace `config/project.json`, add `templates/`, and fill in the tests and examples. The runtime does not import AutoTesting modules.
+此目录是生成应用的骨架，包含项目配置、源代码、构建脚本和测试。初始化后的项目会有自己的 `config/project.json`、Excel 与 DOCX 模板及业务测试；`build.ps1` 用于打包 Windows 应用。
 
-## Filling in a new project
+应用读取操作员填写的工作簿，在安全副本上校验输入并调用 Microsoft Excel 原生重算。报告只填写已映射的 Word 模板位置，不改其他内容。运行机器需要安装 Microsoft Excel；程序运行还依赖 `dist/<应用名>/` 目录中的配套文件。
 
-| Path | What to put there |
-|---|---|
-| `config/project.json` | sources, `scoring.inputs`, `excel_output`, `report_output` |
-| `templates/` | the score workbook and the DOCX report template |
-| `examples/filled_score.xlsx` | a filled copy of the delivered formula workbook for native Excel acceptance |
-| `examples/input.json` | optional legacy form/JSON input record |
-| `examples/boundary_cases.json` | optional — the charter's tier boundaries |
-| `tests/` | keep `test_generated_application.py`; add project-specific cases |
-
-`tests/test_generated_application.py` ships as a skeleton: it states the checks
-every generated application must satisfy and **skips** until `config/project.json`
-is filled in, so an unfilled copy reports "8 skipped" rather than failing. Run it
-with the command the upstream generated apps record:
-
-```
-uv run --with pytest --with openpyxl --with docxtpl --with python-docx python -m pytest tests -q
-```
-
-The behavioural tests drive native Excel recalculation and therefore need
-Microsoft Excel on the host — the same requirement the application itself has.
-
-
-The primary workflow accepts a filled `.xlsx` workbook. It checks the supplied workbook against the formula template while allowing declared input cells to change, copies the supplied file, drives Microsoft Excel recalculation on the copy, reads that copy's score cells, renders a DOCX report, and records both input and output hashes. The original upload stays untouched. The target Windows computer must have Microsoft Excel installed. The full PyInstaller `onedir` folder must be distributed. CLI: `python src/main.py --run-workbook examples/filled_score.xlsx --output out`.
-
-The form/JSON route remains available as a legacy option and rebuilds a workbook from the packaged template.
-
-Excel formulas are the only scoring authority. Only `scoring.mode = "excel_native"` is accepted: the runtime contains no Python scorer, no expression evaluator and no fallback, and a mapped cell whose recalculated formula cache is missing is a blocker rather than a substituted number.
+打包后的 EXE 通常位于 `dist/<应用名>/<应用名>.exe`；公式评分表位于 `config/project.json` 的 `excel_output.template` 指定位置，通常是 `templates/*.xlsx`。

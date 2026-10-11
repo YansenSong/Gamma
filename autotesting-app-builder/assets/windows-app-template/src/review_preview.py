@@ -8,11 +8,10 @@ import re
 from zipfile import ZipFile
 from pathlib import Path
 from lxml import etree
-from report_safety import mark_engineering_copy
 
 
-def render_review_template(template, destination, context):
-    """Replace simple review variables, including runs and merged-cell XML.
+def render_report_template(template, destination, context):
+    """Fill mapped variables while retaining every non-marker package member.
 
     Keep surrounding runs, drawings, fields and package members unchanged.
     This preview deliberately rejects Jinja expressions/control statements.
@@ -22,8 +21,10 @@ def render_review_template(template, destination, context):
     with ZipFile(template) as source, ZipFile(destination,'w') as target:
         for member in source.infolist():
             data=source.read(member.filename)
-            if member.filename.startswith('word/') and member.filename.endswith('.xml'):
+            if (member.filename.startswith('word/') and member.filename.endswith('.xml')
+                    and (b'{{' in data or b'{%' in data)):
                 xml=etree.fromstring(data)
+                changed=False
                 for paragraph in xml.findall('.//w:p',ns):
                     nodes=paragraph.findall('.//w:t',ns)
                     text=''.join(node.text or '' for node in nodes)
@@ -37,16 +38,22 @@ def render_review_template(template, destination, context):
                     for match in reversed(matches):
                         name=match.group(1)
                         if name not in context:raise ValueError('未知报告字段：'+name)
+                        changed=True
                         seen.add(name);affected=[entry for entry in offsets if entry[0]<match.end() and entry[1]>match.start()]
                         first=True
                         for start,end,node in affected:
                             value=node.text or ''
                             left=max(0,match.start()-start);right=min(end-start,match.end()-start)
-                            node.text=value[:left]+(context[name] if first else '')+value[right:]
-                            node.set('{http://www.w3.org/XML/1998/namespace}space','preserve');first=False
-                data=etree.tostring(xml,xml_declaration=True,encoding='UTF-8',standalone=True)
+                            node.text=value[:left]+(str(context[name]) if first else '')+value[right:]
+                            first=False
+                if changed:
+                    data=etree.tostring(xml,xml_declaration=True,encoding='UTF-8',standalone=True)
             target.writestr(member,data)
     if seen!=set(context):raise ValueError('审核清单与实际模板字段不一致')
+
+
+def render_review_template(template, destination, context):
+    return render_report_template(template, destination, context)
 
 
 def create_review_preview(spec, facts, output_dir, resource_path):
@@ -64,19 +71,18 @@ def create_review_preview(spec, facts, output_dir, resource_path):
         value=facts.get(definition['input_id'],'')
         if not isinstance(value,str):raise ValueError('补录信息须为文本：'+field)
         if value.strip():
-            context[field]=value.strip()+'（用户补录，未核验）';supplied[field]=value.strip()
+            context[field]=value.strip();supplied[field]=value.strip()
     output=Path(output_dir).resolve();output.mkdir(parents=True,exist_ok=True)
     stage=Path(tempfile.mkdtemp(prefix='.review-staging-',dir=output))
     try:
         report=stage/'engineering-review.docx'
         render_review_template(template,report,context)
-        protection=mark_engineering_copy(report,config['report_safety'])
         audit={'schema_version':'autotesting-unscored-review-preview-v1','project_id':spec['application']['id'],
                'project_spec_sha256':hashlib.sha256(resource_path('config/project.json').read_bytes()).hexdigest(),
                'business_status':'blocked','official_output_allowed':False,'scoring_performed':False,
                'template_sha256':actual,'user_supplied_unverified':supplied,
                'missing_fields':[key for key in context if key not in supplied],
-               'report_safety':protection,'report_sha256':hashlib.sha256(report.read_bytes()).hexdigest(),
+               'report_sha256':hashlib.sha256(report.read_bytes()).hexdigest(),
                'review_note_unverified':facts.get('review_note',''),
                'notice':'工程预览仅为字段审核；没有评分表、评分结论或正式审批。'}
         (stage/'engineering-review-audit.json').write_text(json.dumps(audit,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='\n')

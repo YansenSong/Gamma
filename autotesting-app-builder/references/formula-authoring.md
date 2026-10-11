@@ -49,9 +49,48 @@ Excel target may be noted as out of scope; it does not create a new score cell,
 question, or release blocker. A workbook score target without adequate PDF support
 remains blocked and must not receive an invented formula.
 
+## Keep the workbook's input contract
+
+Inventory the workbook's existing input cells before applying charter clauses. A
+charter event is not automatically a new input field. For every apparent missing
+fact, check the workbook's existing mutually exclusive states, score-tier counts,
+zero-point category, and already derived measurements. A charter override can be
+an instruction for how an operator classifies an occurrence into an existing
+category before entering its count. Count zero-point occurrences in the existing
+category's denominator when the workbook supplies one; never silently omit them.
+
+If a required target remains uncomputable after that check, record the target,
+the exact missing dependency, and the attempted existing-cell mappings as a
+blocker. Do not ask the user to add columns or records as a routine clarification.
+Changing the workbook schema requires a separate, explicit user request or
+authorization. Keep source workbook and project copy provenance distinct.
+
 The working shape is: people enter measurements and judgements into the workbook;
 Excel formulas turn those into scores; the application recalculates a safe copy
 of this uploaded workbook and reads only its formula results.
+
+Before drafting a formula, use the `excel-mapping.md` entry contract for each
+human-filled input. Distinguish an unperformed item from omitted alternatives
+inside a recorded result according to this workbook's confirmed convention.
+Do not implement a blanket blank-to-zero shortcut or require every unused
+choice to be filled. Test the plausible forms of each entered result on filled
+workbook copies before committing formulas.
+
+Decide and record whether users will calculate by opening the workbook directly
+or only by uploading it to the application. For direct Excel use, formulas must
+interpret the accepted raw forms themselves. For example, a flag formula that
+compares only `=1` treats a typed `是` as false even if the application later
+normalizes `是` to 1. Test both paths separately with the same raw inputs. If a
+form is accepted only by the application, label that limitation in the workbook
+and delivery instructions, and do not claim its direct Excel result is valid.
+
+For every count group, distinguish an untouched blank row, an explicit zero
+total, positive counts, and a counted occurrence in a zero-point category.
+These are different business states. A denominator of zero needs a reviewed
+rule; `NA()`, `IFERROR`, zero, full marks, or omitting the item are all
+score-changing choices. If the PDF and workbook do not decide which applies,
+ask the user before confirming that formula. A request to support multiple
+entry formats does not resolve this scoring decision.
 
 ## Boundaries on derived formulas
 
