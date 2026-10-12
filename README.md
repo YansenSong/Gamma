@@ -1,19 +1,46 @@
-# Gamma 智能行车评分应用构建项目
+# Gamma
 
-本仓库提供一个用于生成离线 Windows 评分应用的 Codex 技能，以及用于验证技能的三份智能行车输入材料。技能以 Excel 评分表中需要计算的单元格为范围，从 PDF 查找对应规则，为项目副本编写公式，并将计算结果填入 Word 检验报告模板的可填区域。
+**基于 PDF、Excel 和 Word 业务材料，生成离线 Windows 评分应用的 Codex Skill。**
 
-## 仓库内容
+Gamma 并非现成的评分软件，而是一套应用构建工具：以 Excel 中的评分单元格确定计算范围，从 PDF 评分规程核对规则，并将结果映射到 Word 检验报告模板。
 
-| 目录 | 内容 |
+## 核心功能
+
+- **规则与公式**：按 Excel 现有评分项定位 PDF 条款，编写评分细则和 Excel 公式。
+- **原生算分**：由 Microsoft Excel 重算并提供分数，Python 不另写一套评分算法。
+- **报告生成**：只填充 DOCX 模板中的 `{{ }}` 位置，保留其他文字与格式。
+- **应用交付**：构建可离线运行的 Windows 桌面应用，附带验证与审计记录；原始材料保持不变。
+
+## 快速开始
+
+**环境要求：** Windows、Microsoft Excel、Python 3.13 和 [uv](https://docs.astral.sh/uv/)。
+
+在仓库根目录创建环境并执行预检：
+
+```powershell
+uv venv .venv --python 3.13
+uv pip install --python .venv/Scripts/python.exe -r autotesting-app-builder/requirements.txt
+cd autotesting-app-builder
+../.venv/Scripts/python.exe -B scripts/check_environment.py --require-excel
+```
+
+准备同一项目的 **评分规程 PDF、评分表 XLSX、带 `{{ }}` 填充标记的空白报告 DOCX**，然后在 Codex 中按 [SKILL.md](autotesting-app-builder/SKILL.md) 执行构建流程，提供这三份文件、项目名称和输出位置。遇到材料无法明确的计分规则时，需要人工确认。
+
+仓库内的 [test-materials/](test-materials/) 是智能行车示例输入，仅用于验证流程。详细操作与约束见 [技能使用说明](autotesting-app-builder/README.md) 和 [环境说明](autotesting-app-builder/references/environment.md)。
+
+## 仓库结构
+
+| 路径 | 用途 |
 | --- | --- |
-| [`autotesting-app-builder/`](autotesting-app-builder/README.md) | 技能说明、执行规范、脚本、应用模板和测试。 |
-| [`docs/`](docs/技能工作流.md) | 技能的详细中文工作流说明。 |
-| [`test-materials/`](test-materials/) | 用于验证技能的评分章程 PDF、评分 Excel 和检验报告 Word 模板。 |
+| [`autotesting-app-builder/`](autotesting-app-builder/) | Codex Skill、分析与验证脚本、Windows 应用模板及测试 |
+| [`test-materials/`](test-materials/) | PDF、Excel、Word 三份示例材料 |
+| [`docs/`](docs/技能工作流.md) | 完整中文工作流文档 |
 
-三份测试输入分别是：[评分章程](test-materials/智能行车评分章程.pdf)、[评分 Excel](test-materials/智能行车评分Excel.xlsx)和[检验报告模板](test-materials/智能行车检验报告模板.docx)。它们用于验证技能；处理其他项目时，应提供该项目自己的三份材料。其中 Word 模板的 `{{ }}` 位置用于自动填充；报告其他内容和格式保持原样。
+## 构建产物
 
-## 使用入口
+生成项目默认位于本地 `generated_apps/<项目名>/`，主要关注：
 
-从[技能 README](autotesting-app-builder/README.md)了解使用方法与整体流程。实际执行规则见[技能说明](autotesting-app-builder/SKILL.md)，运行环境见[环境说明](autotesting-app-builder/references/environment.md)。生成的应用需要在安装 Microsoft Excel 的 Windows 电脑上完成原生重算。
+- **Windows 应用**：`dist/<应用名>/<应用名>.exe`（交付时需保留整个同名目录）。
+- **公式评分表**：`templates/*.xlsx`，以 `config/project.json` 中的 `excel_output.template` 为准。
 
-生成项目保存在本地 `generated_apps/`，Python 环境保存在 `.venv/`；这两个目录不属于仓库提交内容。生成项目的程序和已填公式评分表位置见该项目自己的 `README.md`。
+`generated_apps/` 和 `.venv/` 不纳入版本控制。**生成后的应用无需 AI 服务或网络，但计算评分仍依赖 Windows 上安装的 Microsoft Excel。**
