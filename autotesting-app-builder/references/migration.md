@@ -1,31 +1,30 @@
-# Reuse and migration map
+# 复用与迁移关系
 
-## Reused directly
+## 直接复用的模块
 
-- `ivista_engine.charter.pdf_extractor.PdfPlumberExtractor` is called by the Skill's PDF inspection wrapper. It retains page anchors and the source hash.
-- `ivista_engine.authoring.excel_analyzer` is called by the workbook wrapper for sheet structure, formulas, validation, protection, merged cells, and unsupported features. `validate_workbook.py` also uses its `_archive_features` helper.
-- The existing DOCX template inspector (`ivista_reporting.template_inspector`) is exposed through a wrapper. It reports structure and placeholder candidates; `scripts/report_markers.py` adds the bare `{{ }}` slots the frozen inspector cannot see.
-- The Windows build flow reuses the repository's PyInstaller approach and Qt dependency family through a standalone per-project build script.
+- `ivista_engine.charter.pdf_extractor.PdfPlumberExtractor`：供 PDF 检查脚本调用，保留页码定位信息和来源哈希。
+- `ivista_engine.authoring.excel_analyzer`：供工作簿检查脚本分析工作表结构、公式、数据验证、保护、合并单元格及不支持的功能；`validate_workbook.py` 还使用其 `_archive_features` 辅助函数。
+- `ivista_reporting.template_inspector`：现有 DOCX 模板检查器通过包装脚本对外提供，报告文档结构和占位符候选位置；`scripts/report_markers.py` 另外识别冻结版检查器无法发现的无名 `{{ }}` 位置。
+- Windows 构建流程：通过每个项目独立的构建脚本，复用原仓库的 PyInstaller 方案和 Qt 依赖系列。
 
-These four modules are reached through the frozen copy in `<skill-root>/vendor/`, not a live checkout; `scripts/_bootstrap.py` resolves that directory. The Skill no longer assumes it sits inside the AutoTesting repository. See environment.md.
+上述模块均通过 `<skill-root>/vendor/` 中的冻结副本使用，由 `scripts/_bootstrap.py` 定位，不依赖实时源码检出。技能不再要求位于 AutoTesting 仓库内部；参见 [environment.md](environment.md)。
 
-## Abstracted for generated projects
+## 生成项目中的通用能力
 
-- IVISTA front-end colors, card layouts and drop-area interaction are extracted into the standalone UI design system. Names, logos, categories and dynamic fields come from each project; no fixed scoring/report business code is reused.
+- 将 IVISTA 前端的配色、卡片布局和拖放交互抽取为独立界面设计系统。名称、标志、分类和动态字段由具体项目提供，不复用固定的评分或报告业务代码。
+- **评分只依赖 Excel 原生公式。** 输入校验、Excel 自动化和报告生成均独立提供，不复制 Python 评分器。
+- Excel 输出基于用户评审后的模板副本，只将明确映射的数据写入独立输出文件。带公式的工作簿必须经过 Microsoft Excel 原生重算，才能信任其缓存结果。
+- 若输入工作簿缺少分项评分公式，技能根据章程推导公式，在分阶段验证、Excel 原生边界检查和独立备份之后，仅写入 `init_project.py` 工作区副本 `templates/score.xlsx`。原始工作簿不变；公式仍由 Excel 而非 Python 执行。参见 [formula-authoring.md](formula-authoring.md)。
+- DOCX 输出使用显式来源映射和 Jinja 占位符。输入必须是带 `{{ }}` 标记的空白模板，不接受已完成的报告；每个标记在填充前都需要映射并评审。
+- 项目验证通过规范化的 Excel 公式绑定哈希，将每项已批准的业务选择与具体公式关联。选择、公式或映射发生变化时，原批准失效。
 
-- Scoring uses only native Excel formulas. Input validation, Excel automation and report generation are standalone; no Python scorer is copied.
-- Excel output copies a user-reviewed template and writes only explicit mappings into a separate output file. Formula workbooks require native Excel recalculation before their cached formulas can be trusted.
-- When the supplied workbook has no per-item scoring formulas, the Skill derives them from the charter and writes them only to the `init_project.py` workspace copy at `templates/score.xlsx` after staged validation, native Excel boundary checks and a unique backup. The user's source workbook remains unchanged; the formulas remain Excel's, not Python's. Read formula-authoring.md.
-- DOCX output uses explicit source mappings and Jinja placeholders. The report input is a blank template marked with `{{ }}`; a completed report is not accepted. Each marker is mapped and reviewed before it can be filled.
-- Project validation binds each approved business choice to a canonical Excel formula binding hash. Changing the selected choice, formula or mapping invalidates approval.
+## 仅供旧版兼容的行为
 
-## Legacy-only behavior
+`ivista_desktop`、固定车辆分类、IVISTA 专用报告版式、现有 RulePack 和当前 EXE 入口仅作为兼容工作流保留。生成应用不会复制这些内容，不应修改其固定业务行为来实现所谓通用化。
 
-- `ivista_desktop`, its fixed vehicle categories, IVISTA-specific report layout, existing RulePacks, and the current EXE entry point remain compatibility workflows. They are not copied into generated applications and should not be generalized by changing their fixed business behavior.
+## 迁移步骤
 
-## Migration path
-
-1. Retain old IVISTA code and artifacts as historical compatibility references; do not use their Python scoring path in the Skill or generated applications.
-2. Create a separate `generated_apps/<project-id>/` for each new charter/workbook/report combination.
-3. Review rule interpretation, Excel cell mapping, report fields, calculation authority, and source hashes before marking any decision confirmed.
-4. Run generated tests and inspect outputs. Promote to `business_validated` only after real evidence and named reviews meet `references/acceptance.md`.
+1. 将旧版 IVISTA 代码及产物作为历史兼容参考保留，不得在技能或生成应用中沿用其 Python 评分路径。
+2. 每组新的章程、工作簿和报告模板，都建立独立的 `generated_apps/<project-id>/`。
+3. 确认决定前，核对规则解释、Excel 单元格映射、报告字段、计算权威和来源哈希。
+4. 运行生成项目的测试并检查输出。只有真实证据和明确的评审符合 [acceptance.md](acceptance.md)，才能将项目提升为 `business_validated`。
