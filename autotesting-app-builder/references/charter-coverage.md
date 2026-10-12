@@ -1,12 +1,7 @@
-# Workbook-targeted charter coverage
+# 面向工作簿评分目标的章程覆盖检查
 
-Use the Excel score-target inventory as the denominator. For every target cell,
-record its actual inputs, formula or missing formula, PDF source hash/page/block,
-reviewed rule, workbook result, status and missing reason. Mark any additional
-PDF clause outside the workbook's requested outputs as out of scope. Do not
-describe this matrix as exhaustive coverage of the PDF. A base threshold match
-does not validate modifiers, trial validity or actual test provenance.
+以 Excel 评分目标单元格清单作为覆盖率的分母。对每个目标单元格，记录实际输入、现有或缺失的公式、PDF 来源哈希及页码/内容块、已评审规则、工作簿结果、状态和缺失原因。PDF 中不对应工作簿输出的其他条款标记为范围外；不要把此矩阵描述成对整份 PDF 的完整覆盖。只匹配基础阈值，并不能证明修正项、试验有效性或实际测试来源已获验证。
 
-Aggregate statuses from the rows: matched, conflict, ambiguous, not_covered, missing_evidence. Unknown equality boundaries remain ambiguous; unit-suffixed text and numeric inputs must be compared through the actual workbook when its formulas branch by type. Unknown completion/collision/exit/validity states have no favorable defaults. List explicit required facts and units. Constructed boundary scenarios are labelled synthetic and never merged into real observations.
+按各行汇总状态：`matched`、`conflict`、`ambiguous`、`not_covered`、`missing_evidence`。等号边界不明时仍标为 `ambiguous`；若公式按值类型分支，应在实际工作簿中比较带单位的文本和数值输入。完成、碰撞、退出和有效性状态不明时，不允许采用有利的默认值。明确列出所需事实及单位。人工构造的边界场景须标记为合成测试，不得混入真实观测记录。
 
-Implemented functions tested on constructed inputs may still have missing_evidence in the actual-material matrix. Derived legacy totals can test grade thresholds, but do not establish independent full totals. Any unresolved rule/mapping/approval blocks a business verdict even when every selected legacy output is reproduced.
+即使函数已通过构造输入的测试，真实材料覆盖矩阵中仍可能存在 `missing_evidence`。从旧版数据推导的总分可以用于测试评级阈值，但不能证明独立计算的完整总分。只要规则、映射或批准仍有待决事项，即使复现了所有选定的旧版输出，也不能给出业务验收通过的结论。
