@@ -1,17 +1,17 @@
-# 真实业务材料验证
+# Real business evidence
 
-以真实的评分章程、工作簿和报告文件作为主要验收依据；合成案例只保留为基础回归测试。当选用该仓库的材料时，依次从泊车、安全、行车开始。
+Use existing real charter/workbook/report files as the primary acceptance evidence. Preserve synthetic cases as baseline tests. Start with parking, then security, then driving when these repository materials are selected.
 
-分别记录三类结论：
+Record three separate verdicts:
 
-1. **旧版 Excel 一致性**：来源 SHA、原始公式与缓存，以及 Microsoft Excel 原生版本和计算结果；只能使用相互独立的副本。
-2. **章程正确性**：可追溯到 PDF 页码、内容块或表格的独立计算；列出冲突阈值、上限、缺失的原始观测值、舍入和解释问题。旧版公式只是比较基线，不能消除冲突。
-3. **报告保真性**：逐项追踪变量来源与缺失字段，核对静态 XML、表格、页眉页脚是否保留，比较新旧输出并检查渲染页面。
+1. Legacy Excel consistency: source SHA, original formulas/cache and native Microsoft Excel version/results, using independent copies only.
+2. Charter correctness: independent calculations traceable to PDF page and block/table anchors. List conflicting thresholds, caps, missing raw observations, rounding and interpretation questions. Legacy formulas are a comparison baseline and do not resolve conflicts.
+3. Report fidelity: each variable's source, missing fields, static XML/table/header/footer preservation, old/new output differences and rendered page review.
 
-除非有补充证据证明，既有值不具备已核实的试验来源，应归为“现有工作簿证据”。不得编造试验日期、碰撞、完成标记、批准或元数据。可选试验的空白必须与零分区分。在副本上构造的边界输入应明确标记为构造测试。
+Existing values lack verified trial provenance unless supplied evidence establishes it. Classify them as existing-workbook evidence; never invent trial dates, collisions, completion flags, approvals or metadata. Blank optional trials must remain distinct from zero scores. Boundary inputs on copies are explicitly labeled constructed tests.
 
-对于行车，保留 `docs/评分细则候选/driving/business_decisions.json` 中的全部 Q1–Q10 及其待决状态。切换计算权威不代表问题自动解决。
+For driving, retain all Q1–Q10 in `docs/评分细则候选/driving/business_decisions.json`, preserving pending decisions. Changing calculation authority cannot silently resolve them.
 
-根据三份源文件和分析结果生成项目代码。旧版适配器和 RulePack 只能用作比较参考。映射或评审决定缺失时，验证状态必须阻塞，并提供可执行的待办清单。工程预览可以在已映射位置填入“未提供”，但必须拒绝正式发布，并在独立审计记录和界面中说明比较不完整；不得向 DOCX 添加标识或修改静态内容。不能只核对某类别的部分内容就宣称整个类别通过验证。
+Generate project code from the three source documents and analysis. Old adapters/RulePacks may run only as comparison references. Missing mappings or review decisions require a blocked validation state and an actionable checklist. An engineering preview may fill mapped placeholders with “未提供”, but must refuse official release and disclose incomplete comparisons in its separate audit and UI. Do not add labels or alter static content in the DOCX. Never mark a whole category validated after checking a subset.
 
-Microsoft Excel 原生结果与仅通过 LibreOffice 得到的回归结果必须分开记录。缺少 LibreOffice 属于环境错误，绝不算测试通过。交付来源哈希、逐单元格比较、过程日志、截图、页面检查、自包含的 onedir 程序目录，以及各类别真实的验证状态。
+Keep native Excel results separate from LibreOffice-only regression results. Missing LibreOffice is an environment error, never a passed test. Deliver source hashes, per-cell comparisons, process logs, screenshots, page checks, self-contained onedir package and honest per-category status.
