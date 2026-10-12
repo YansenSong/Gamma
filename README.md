@@ -1,8 +1,8 @@
 # Gamma
 
-**基于 PDF、Excel 和 Word 业务材料，生成离线 Windows 评分应用的 Codex Skill。**
+**基于 PDF、Excel 和 Word 业务材料，构建离线 Windows 评分应用的通用 Skill。**
 
-Gamma 并非现成的评分软件，而是一套应用构建工具：以 Excel 中的评分单元格确定计算范围，从 PDF 评分规程核对规则，并将结果映射到 Word 检验报告模板。
+Gamma 并非现成的评分软件，而是一套可复用的应用构建技能与工具：以 Excel 中的评分单元格确定计算范围，从 PDF 评分规程核对规则，并将结果映射到 Word 检验报告模板。
 
 ## 核心功能
 
@@ -24,7 +24,7 @@ cd autotesting-app-builder
 ../.venv/Scripts/python.exe -B scripts/check_environment.py --require-excel
 ```
 
-准备同一项目的 **评分规程 PDF、评分表 XLSX、带 `{{ }}` 填充标记的空白报告 DOCX**，然后在 Codex 中按 [SKILL.md](autotesting-app-builder/SKILL.md) 执行构建流程，提供这三份文件、项目名称和输出位置。遇到材料无法明确的计分规则时，需要人工确认。
+准备同一项目的 **评分规程 PDF、评分表 XLSX、带 `{{ }}` 填充标记的空白报告 DOCX**，使用本技能时，按 [SKILL.md](autotesting-app-builder/SKILL.md) 中的流程执行构建，提供这三份文件、项目名称和输出位置。遇到材料无法明确的计分规则时，需要人工确认。
 
 仓库内的 [test-materials/](test-materials/) 是智能行车示例输入，仅用于验证流程。详细操作与约束见 [技能使用说明](autotesting-app-builder/README.md) 和 [环境说明](autotesting-app-builder/references/environment.md)。
 
@@ -32,7 +32,7 @@ cd autotesting-app-builder
 
 | 路径 | 用途 |
 | --- | --- |
-| [`autotesting-app-builder/`](autotesting-app-builder/) | Codex Skill、分析与验证脚本、Windows 应用模板及测试 |
+| [`autotesting-app-builder/`](autotesting-app-builder/) | 通用构建技能、分析与验证脚本、Windows 应用模板及测试 |
 | [`test-materials/`](test-materials/) | PDF、Excel、Word 三份示例材料 |
 | [`docs/`](docs/技能工作流.md) | 完整中文工作流文档 |
 
