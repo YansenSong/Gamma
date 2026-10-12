@@ -1,19 +1,19 @@
-# Default desktop design
+# 默认桌面界面设计
 
-The visual authority is `ivista_desktop/main.py`, `settings.py`, and actual running screenshots. The reusable template contains only visual components and project-scoped settings; it has no IVISTA scoring imports.
+界面视觉基准来自 `ivista_desktop/main.py`、`settings.py` 和实际运行截图。可复用模板只包含视觉组件与项目级设置，不导入 IVISTA 评分代码。
 
-## Assets and configuration
+## 资源与配置
 
-- `src/ui_design_system/workbench.qss`: extracted IVISTA colors and control selectors; hero #12325b, background #f3f6fb, primary #246fdb, white cards with 14px corners.
-- `components.py`: keyboard-accessible clickable drop area, drag state and local-file handling.
-- `settings.py`: per-project output directory, completion action and always-on-top preferences.
-- `application.ui.brand`, `category`, `subtitle` and optional `application.logo` are project values. Bundle configured assets; do not invent a business identity or copy IVISTA branding automatically.
-- Two-column workbench: dynamic inputs and data import on the left; queued files, progress and outputs on the right. Preserve the 32/28px outer margins, 18px card gaps, 22/18px card padding and typography from the reference.
+- `src/ui_design_system/workbench.qss`：提取自 IVISTA 的颜色与控件选择器；顶部区域为 `#12325b`、背景为 `#f3f6fb`、主色为 `#246fdb`，白色卡片圆角为 14px。
+- `components.py`：支持键盘操作的可点击拖放区域、拖放状态和本地文件处理。
+- `settings.py`：按项目保存输出目录、完成后操作和窗口置顶偏好。
+- `application.ui.brand`、`category`、`subtitle` 及可选 `application.logo` 均由项目提供。需要打包已配置的资源，不得虚构业务标识或自动照搬 IVISTA 品牌。
+- 双栏工作台：左侧为动态输入和数据导入，右侧为待处理文件、进度和输出。遵循参考界面的外边距 32/28px、卡片间距 18px、卡片内边距 22/18px 与字体排版。
 
-## Interaction acceptance
+## 交互验收
 
-Run native Windows widgets and save screenshots of the original workbench, generated workbench, settings and completed/error states. Review images for clipping, colors, hierarchy and spacing. Widget construction alone is insufficient.
+在 Windows 原生控件环境中运行，保存原始工作台、生成的工作台、设置页以及成功/错误状态的截图。检查裁切、配色、层次和间距；只验证控件能创建还不够。
 
-Exercise file picker, real Qt drag/drop events, duplicate/unsupported files, list clearing, import/edit/current-form generation, multiple-file processing, progress updates, failure recovery, preference persistence, result opening and output-directory opening. Long work runs off the GUI thread. Explain that batch jobs use file inputs while single-record jobs use current edited form values. Disable queue editing during work, and prevent closing a running worker.
+实际测试文件选择器、Qt 拖放事件、重复或不支持的文件、清空列表、导入/编辑/按当前表单生成、多文件处理、进度更新、错误恢复、偏好持久化、打开结果和打开输出目录。长任务必须离开 GUI 主线程执行。说明批量任务使用文件输入，单条记录任务使用当前编辑表单的值。运行过程中禁用队列编辑，阻止在工作线程运行时关闭程序。
 
-Keep each complete workbook/report/audit bundle in a new numbered directory. Never overwrite existing outputs. Report batch failures individually and do not label failed records successful.
+每组完整的工作簿、报告和审计产物应保存到新建的编号目录中，绝不覆盖已有输出。批量失败应逐项报告，不得将失败记录标记为成功。
